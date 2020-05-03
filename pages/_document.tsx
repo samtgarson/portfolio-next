@@ -1,14 +1,15 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import { default as NextDocument, Head, Main, NextScript } from 'next/document'
 import { extractCritical } from '@emotion/server'
+import {EmotionCritical} from '@emotion/server/types/create-instance'
 
-export default class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
+export default class Document extends NextDocument<EmotionCritical> {
+  static getInitialProps ({ renderPage }) {
     const page = renderPage()
     const styles = extractCritical(page.html)
     return { ...page, ...styles }
   }
 
-  render() {
+  render () {
     return (
       <html>
         <Head>
