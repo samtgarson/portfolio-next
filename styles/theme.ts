@@ -1,7 +1,7 @@
 import { createContainer } from 'unstated-next'
 import { useState } from 'react'
 
-interface Colors {
+export interface Colors {
   bg: string
   fg: string
 }

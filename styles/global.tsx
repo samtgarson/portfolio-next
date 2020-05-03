@@ -13,17 +13,20 @@ export const GlobalStyles = () => {
           src: `url('/fonts/studio-feixen.ttf') format('truetype')`
         },
         'html, body': {
+          backgroundColor: colors.bg,
+          color: colors.fg,
+          fontFamily: 'studiofeixen, serif',
+          fontSize: '12px',
           fontVariationSettings: `'wdth' 0, 'wght' 0`,
           margin: 0,
-          padding: 0,
           minHeight: '100%',
-          fontFamily: 'studiofeixen, serif',
-          fontSize: '24px',
-          backgroundColor: colors.bg,
-          color: colors.fg
+          padding: 0
         },
         '*': {
           transition: '.2s color ease, .2s background-color ease'
+        },
+        a: {
+          color: 'inherit'
         }
       }}
     />
