@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { Global } from '@emotion/react'
 
 export const globalStyles = (
@@ -5,7 +6,7 @@ export const globalStyles = (
     styles={{
       '@font-face': {
         fontFamily: 'studiofeixen',
-        src: `url('/fonts/studio-feixen.ttf') format('truetype')`,
+        src: `url('/fonts/studio-feixen.ttf') format('truetype')`
       },
       'html, body': {
         fontVariationSettings: `'wdth' 0, 'wght' 0`,

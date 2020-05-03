@@ -1,6 +1,7 @@
+import * as React from 'react'
 import { default as NextDocument, Head, Main, NextScript } from 'next/document'
 import { extractCritical } from '@emotion/server'
-import {EmotionCritical} from '@emotion/server/types/create-instance'
+import { EmotionCritical } from '@emotion/server/types/create-instance'
 
 export default class Document extends NextDocument<EmotionCritical> {
   static getInitialProps ({ renderPage }) {
