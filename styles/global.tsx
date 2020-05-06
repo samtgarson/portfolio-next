@@ -8,14 +8,10 @@ export const GlobalStyles = () => {
   return (
     <Global
       styles={{
-        '@font-face': {
-          fontFamily: 'studiofeixen',
-          src: `url('/fonts/studio-feixen.ttf') format('truetype')`
-        },
         'html, body': {
           backgroundColor: colors.bg,
           color: colors.fg,
-          fontFamily: 'studiofeixen, serif',
+          fontFamily: 'studiofeixen-variable, serif',
           fontSize: '12px',
           fontVariationSettings: `'wdth' 0, 'wght' 0`,
           margin: 0,

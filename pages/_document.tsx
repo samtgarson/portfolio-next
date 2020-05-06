@@ -18,6 +18,7 @@ export default class Document extends NextDocument<EmotionCritical> {
             data-emotion-css={this.props.ids.join(' ')}
             dangerouslySetInnerHTML={{ __html: this.props.css }}
           />
+          <link rel="stylesheet" type="text/css" href="/fonts/studio-feixen.css" />
         </Head>
         <body>
           <Main />
