@@ -1,7 +1,9 @@
-import * as React from 'react'
+import { Intro } from '~/components/slides/intro'
 
-const Home = () => {
-  return (<></>)
-}
+const Home = () => (
+  <>
+    <Intro />
+  </>
+)
 
 export default Home

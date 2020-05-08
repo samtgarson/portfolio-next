@@ -1,5 +1,5 @@
 import { CSSObject } from "@emotion/css"
-import { padding } from "./vars"
+import { padding, smallScreen, bigScreen } from "./vars"
 
 export const dot = (
   color: string,
@@ -31,5 +31,23 @@ export const line = (
     width: padding * 3,
     margin: `0 ${padding / 2}px`,
     backgroundColor: color
+  }
+})
+
+const _textStroke = (color: string, w: number) => `
+  -${w}px -${w}px 0px ${color},
+  -${w}px 0px 0px ${color},
+  -${w}px ${w}px 0px ${color},
+  0px -${w}px 0px ${color},
+  0px ${w}px 0px ${color},
+  ${w}px 0px 0px ${color},
+  ${w}px ${w}px 0px ${color},
+  ${w}px -${w}px 0px ${color}
+`
+
+export const textStroke = (color: string) => ({
+  textShadow: _textStroke(color, 1),
+  [smallScreen]: {
+    textShadow: _textStroke(color, 0.5)
   }
 })
