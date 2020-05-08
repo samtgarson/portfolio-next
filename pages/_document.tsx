@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { default as NextDocument, Head, Main, NextScript } from 'next/document'
+import Document, { Head, Main, NextScript, DocumentContext } from 'next/document'
 import { extractCritical } from '@emotion/server'
 import { EmotionCritical } from '@emotion/server/types/create-instance'
 
-export default class Document extends NextDocument<EmotionCritical> {
-  static getInitialProps ({ renderPage }) {
-    const page = renderPage()
+export default class CustomDocument extends Document<EmotionCritical> {
+  static async getInitialProps ({ renderPage }: DocumentContext) {
+    const page = await renderPage()
     const styles = extractCritical(page.html)
     return { ...page, ...styles }
   }
