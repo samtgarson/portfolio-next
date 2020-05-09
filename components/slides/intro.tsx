@@ -4,8 +4,9 @@ import { Appear } from '~/components/appear'
 
 const Wrapper = styled.div({
   position: `relative`,
-  marginTop: `20vh`,
-  textAlign: `center`
+  marginTop: `45vh`,
+  textAlign: `center`,
+  transform: `translateY(-50%)`
 })
 
 const Title = styled(Appear)({

@@ -5,9 +5,13 @@ import { GlobalStyles } from '../styles/global'
 import { AppPropsType } from 'next/dist/next-server/lib/utils'
 import { Theme } from '~/styles/theme'
 import { Frame } from '~/components/frame'
+import Head from 'next/head'
 
 const App = ({ Component, pageProps }: AppPropsType) => (
   <CacheProvider value={cache}>
+    <Head>
+      <title>Sam Garson</title>
+    </Head>
     <Theme.Provider>
       <GlobalStyles />
       <Frame />

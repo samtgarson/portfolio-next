@@ -19,6 +19,7 @@ export default class CustomDocument extends Document<EmotionCritical> {
             dangerouslySetInnerHTML={{ __html: this.props.css }}
           />
           <link rel="stylesheet" type="text/css" href="/fonts/studio-feixen.css" />
+          <link rel="shortcut icon" href="/favicon.png" />
         </Head>
         <body>
           <Main />
