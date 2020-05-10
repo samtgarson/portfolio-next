@@ -8,10 +8,10 @@ const shuffle = <T>(a: T[]): T[] => a
 
 const rand = (min: number, max: number) => Math.random() * (max - min) + min
 
-const X_SIZE = 200
-const Y_SIZE = 160
+const X_TILE_SIZE = 200
+const Y_TILE_SIZE = 160
 
-export const getBounds = (ref: RefObject<HTMLDivElement>): Bounds => {
+const getBounds = (ref: RefObject<HTMLDivElement>): Bounds => {
   if (!ref.current) return {}
 
   const { clientWidth: w, clientHeight: h } = ref.current
@@ -22,9 +22,9 @@ export const getPoints = ({ w, h }: Bounds) => {
   const points: Point[] = []
   if (!w || !h ) return points
 
-  const xTilesNum = Math.floor(w / X_SIZE)
+  const xTilesNum = Math.floor(w / X_TILE_SIZE)
   const xTilesSize = w / xTilesNum
-  const yTilesNum = Math.floor(h / Y_SIZE)
+  const yTilesNum = Math.floor(h / Y_TILE_SIZE)
   const yTilesSize = h / yTilesNum
 
   for (let j=0; j < yTilesNum; j++) {
@@ -43,3 +43,15 @@ export const getPoints = ({ w, h }: Bounds) => {
   return shuffle(points)
 }
 
+
+const BUFFER = 100
+export const bufferedSetBounds = (bounds: Bounds, wrapper: RefObject<HTMLDivElement>, setBounds: (b: Bounds) => void) => {
+  const newBounds = getBounds(wrapper)
+
+  if (newBounds.w && newBounds.h && bounds.w && bounds.h) {
+    const diff = (newBounds.w + newBounds.h) - (bounds.w + bounds.h)
+    if (Math.abs(diff) < BUFFER) return
+  }
+
+  setBounds(newBounds)
+}

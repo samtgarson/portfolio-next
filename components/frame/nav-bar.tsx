@@ -6,25 +6,26 @@ import { dot } from '~/styles/mixins'
 import { Colors, Theme } from '~/styles/theme'
 
 const Nav = styled.nav({
-  position: 'fixed',
+  position: `fixed`,
   top: padding,
   left: padding,
   right: padding,
-  display: 'flex',
-  flexFlow: 'row-nowrap',
-  justifyContent: 'space-between'
+  display: `flex`,
+  flexFlow: `row-nowrap`,
+  justifyContent: `space-between`,
+  zIndex: 100
 })
 
 const TitleWrapper = styled.div({
-  display: 'flex',
-  flexFlow: 'row-nowrap'
+  display: `flex`,
+  flexFlow: `row-nowrap`
 })
 
 const Title = styled.h1((props: Colors) => ({
-  ...dot(props.fg, '0.9em', 'before', { marginRight: '0.9em' }),
-  lineHeight: '1em',
-  fontVariationSettings: '"whgt" 100, "wdth" 100',
-  textTransform: "uppercase",
+  ...dot(props.fg, `0.9em`, `before`, { marginRight: `0.9em` }),
+  lineHeight: `1em`,
+  fontVariationSettings: `'whgt' 100, 'wdth' 100`,
+  textTransform: `uppercase`,
   margin: 0
 }))
 
@@ -33,8 +34,8 @@ const LinkWrapper = styled.div({
     marginLeft: padding / 2
   },
   [smallScreen]: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: `flex`,
+    flexDirection: `column`,
     a: {
       marginBottom: padding / 2
     }

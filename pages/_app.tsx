@@ -6,6 +6,7 @@ import { AppPropsType } from 'next/dist/next-server/lib/utils'
 import { Theme } from '~/styles/theme'
 import { Frame } from '~/components/frame'
 import Head from 'next/head'
+import { Background } from '~/components/background'
 
 const App = ({ Component, pageProps }: AppPropsType) => (
   <CacheProvider value={cache}>
@@ -13,6 +14,7 @@ const App = ({ Component, pageProps }: AppPropsType) => (
       <title>Sam Garson</title>
     </Head>
     <Theme.Provider>
+      <Background />
       <GlobalStyles />
       <Frame />
       <Component {...pageProps} />

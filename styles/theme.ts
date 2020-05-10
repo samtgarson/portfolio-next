@@ -18,7 +18,9 @@ const themes: Record<string, Colors> = {
 
 const useTheme = () => {
   const [colors, _setTheme] = useState<Colors>(themes.dark)
-  const setTheme = (theme: Themes) => _setTheme(themes[theme])
+  const setTheme = (theme: Themes) => {
+    if (themes[theme]) _setTheme(themes[theme])
+  }
 
   return { colors, setTheme }
 }

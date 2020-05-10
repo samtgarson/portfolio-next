@@ -1,35 +1,23 @@
-import * as React from 'react'
 import { useDebouncedCallback } from 'use-debounce'
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
 import styled from '@emotion/styled'
-import { getBounds, getPoints, Bounds, Point } from './tools'
+import { getPoints, Bounds, Point, bufferedSetBounds } from './util'
 import { Star } from './star'
-import { motion, Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const FieldWrapper = styled(motion.div)({
-  position: `fixed`,
-  top: 40,
-  bottom: 40,
-  left: 40,
-  right: 40,
   pointerEvents: `none`
 })
 
-const variants: Variants = {
-  animate: {
-    transition: { staggerChildren: 0.1 }
-  }
-}
-
-export const Field = () => {
+export const Field: FunctionComponent<{ className?: string }> = ({ className }) => {
   const [bounds, setBounds] = useState<Bounds>({})
   const [points, setPoints] = useState<Point[]>([])
-  const [getAndSetBounds] = useDebouncedCallback(() => setBounds(getBounds(wrapper)), 200)
+  const [getAndSetBounds] = useDebouncedCallback(() => bufferedSetBounds(bounds, wrapper, setBounds), 200)
   const wrapper = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    window.addEventListener('resize', getAndSetBounds)
     getAndSetBounds()
+    window.addEventListener('resize', getAndSetBounds)
 
     return () => window.removeEventListener('resize', getAndSetBounds)
   }, [])
@@ -39,12 +27,7 @@ export const Field = () => {
   }, [bounds])
 
   return (
-    <FieldWrapper
-      ref={wrapper}
-      animate='animate'
-      initial='initial'
-      variants={variants}
-    >
+    <FieldWrapper ref={wrapper} className={className}>
       { points.map((p, i) => <Star p={p} i={i} key={p.join('-')} />)}
     </FieldWrapper>
   )

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Point } from "./tools"
+import { Point } from "./util"
 import { FunctionComponent } from "react"
 import styled from '@emotion/styled'
 import { motion, Variants } from 'framer-motion'
@@ -11,7 +11,7 @@ const StarWrapper = styled(motion.div)({
 })
 
 const StyledStar = styled(motion.div)({
-  fontSize: `0.9rem`
+  fontSize: `1rem`
 })
 
 type StarProps = {
@@ -21,6 +21,7 @@ type StarProps = {
 
 const symbols = ['\u25B4', '\u25CF', '\u25A0']
 const symbol = (i: number) => symbols[i % symbols.length]
+const delay = (i: number) => 1 + (i * 0.3)
 
 const wrapperVariants: Variants = {
   initial: {},
@@ -29,7 +30,7 @@ const wrapperVariants: Variants = {
     transition: {
       duration: 3,
       loop: `Infinity`,
-      delay: 1 + i * 0.5,
+      delay: delay(i),
       ease: `easeInOut`
     }
   })
@@ -38,13 +39,13 @@ const wrapperVariants: Variants = {
 const variants: Variants = {
   initial: {
     y: `120%`,
-    rotate: `720deg`
+    rotate: `-1080deg`
   },
   animate: (i: number) => ({
     y: 0,
     rotate: `${(i % 5) * 80}deg`,
     transition: {
-      delay: 1 + i * 0.5
+      delay: delay(i)
     }
   })
 }

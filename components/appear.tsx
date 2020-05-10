@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { motion, Variants } from 'framer-motion'
 import { Theme } from '~/styles/theme'
@@ -23,7 +23,7 @@ const frameVariants: Variants = {
   animate: ({ delay = 0, stretch }: AppearOpts) => ({
     fontVariationSettings: stretch ? [`'wdth' -80, 'wght' 0`, `'wdth' 100, 'wght' 0`, `'wdth' -80, 'wght' 0`] : `inherit`,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
       loop: `Infinity`,
       delayChildren: delay,
       delay,
@@ -54,18 +54,22 @@ type AppearProps = {
 export const Appear = ({ text, className, delay, align, outline, stretch }: AppearProps) => {
   const { colors } = Theme.useContainer()
   const arr = React.useMemo(() => Array.from(text), [text])
+  const [initial, setInitial] = useState<string>('disabled for users without js')
+
+  useEffect(() => setInitial('initial'), [])
 
   return (
     <Line
+      key={initial}
       className={className}
       variants={frameVariants}
       custom={{ align, delay, stretch }}
       animate='animate'
-      initial='initial'
+      initial={initial}
     >{
       arr.map((s, i) => (
         <motion.div
-          style={{
+          css={{
             color: outline ? colors.bg : colors.fg,
             ...(outline ? textStroke(colors.fg) : {})
           }}

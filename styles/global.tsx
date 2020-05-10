@@ -9,20 +9,22 @@ export const GlobalStyles = () => {
     <Global
       styles={{
         'html, body': {
-          backgroundColor: colors.bg,
+          backgroundColor: `black`,
           color: colors.fg,
           fontFamily: 'studiofeixen-variable, serif',
           fontSize: '12px',
           fontVariationSettings: `'wdth' 0, 'wght' 0`,
           margin: 0,
-          minHeight: '100%',
           padding: 0
         },
-        '*': {
-          transition: '.2s color ease, .2s background-color ease'
+        body: {
+          perspective: 2
+        },
+        'p, h1, h2, h3, a, span': {
+          transition: `.2s color ease`
         },
         a: {
-          color: 'inherit'
+          color: `inherit`
         }
       }}
     />
