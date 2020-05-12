@@ -12,7 +12,10 @@ type AppearOpts = {
 
 const Line = styled(motion.div)({
   overflow: `hidden`,
-  display: `flex`
+  display: `flex`,
+  '&.stretch': {
+    fontVariationSettings: `'wdth' 100, 'wght' 0`
+  }
 })
 
 const frameVariants: Variants = {
@@ -51,7 +54,7 @@ type AppearProps = {
   stretch?: boolean
 }
 
-export const Appear = ({ text, className, delay, align, outline, stretch }: AppearProps) => {
+export const Appear = ({ text, className = '', delay, align, outline, stretch }: AppearProps) => {
   const { colors } = Theme.useContainer()
   const arr = React.useMemo(() => Array.from(text), [text])
   const [initial, setInitial] = useState<string>('disabled for users without js')
@@ -61,7 +64,7 @@ export const Appear = ({ text, className, delay, align, outline, stretch }: Appe
   return (
     <Line
       key={initial}
-      className={className}
+      className={[className, stretch ? `stretch` : ''].join(' ')}
       variants={frameVariants}
       custom={{ align, delay, stretch }}
       animate='animate'
@@ -69,7 +72,7 @@ export const Appear = ({ text, className, delay, align, outline, stretch }: Appe
     >{
       arr.map((s, i) => (
         <motion.div
-          css={{
+          style={{
             color: outline ? colors.bg : colors.fg,
             ...(outline ? textStroke(colors.fg) : {})
           }}

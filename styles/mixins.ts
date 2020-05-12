@@ -1,5 +1,7 @@
 import { CSSObject } from "@emotion/css"
-import { padding, smallScreen, bigScreen } from "./vars"
+import { padding, smallScreen } from "./vars"
+
+export const staticFontSize = (n: number, m: number = n * 1.15) => `max(${n}vw, ${m}vh)`
 
 export const dot = (
   color: string,

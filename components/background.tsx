@@ -7,28 +7,28 @@ const INITIAL_SIZE = 40
 const DURATION = 0.3
 
 const Circle = styled(motion.div)({
-  borderRadius: INITIAL_SIZE / 2,
-  zIndex: -1,
+  zIndex: 0,
+  pointerEvents: `none`,
   position: `fixed`,
-  top: -50,
-  left: -50,
-  bottom: -50,
-  right: -50
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0
 })
 
 const variants: Variants = {
   initial: {
-    clipPath: "circle(15px at 30px 30px)"
+    clipPath: `circle(${INITIAL_SIZE}px at 30px 30px)`
   },
   animate: (size: number) => ({
-    clipPath: `circle(${size * 2 + 200}px at 30px 30px)`,
+    clipPath: `circle(${size * 2}px at 30px 30px)`,
     transition: {
       type: "spring",
       stiffness: 10
     }
   }),
   exit: (size: number) => ({
-    clipPath: `circle(${size * 2 + 200}px at 30px 30px)`,
+    clipPath: `circle(${size * 2}px at 30px 30px)`,
     transition: {
       duration: DURATION
     }
@@ -38,13 +38,9 @@ const variants: Variants = {
 export const Background = () => {
   const { colors } = Theme.useContainer()
   const [size, setSize] = useState(0)
-  const [animate, setAnimate] = useState<string>('animate')
-
-  /* useEffect(() => { */
-  /*   setAnimate('animate') */
-  /* }, []) */
 
   useEffect(() => {
+    // pythag to get the diagonal size of the window
     setSize(Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2))
   }, [colors])
 
@@ -56,7 +52,7 @@ export const Background = () => {
         custom={size}
         variants={variants}
         initial='initial'
-        animate={animate}
+        animate='animate'
         exit='exit'
       />
     </AnimatePresence>

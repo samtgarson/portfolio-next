@@ -5,6 +5,7 @@ import { Disappear } from '~/components/disappear'
 import { Field } from '../field'
 import { useThemedSection } from '~/util/use-themed-section'
 import { Themes } from '~/styles/theme'
+import { staticFontSize } from '~/styles/mixins'
 
 const IntroField = styled(Field)({
   position: `absolute`,
@@ -24,13 +25,13 @@ const Wrapper = styled.div({
 })
 
 const Title = styled(Appear)({
-  fontSize: `max(8vw, 9vh)`
+  fontSize: staticFontSize(8)
 })
 
 const intro = ['I build', 'teams', 'that build', 'things.']
 
 export const Intro = () => {
-  const wrapperRef = useThemedSection(Themes.Dark)
+  const wrapperRef = useThemedSection(Themes.White)
 
   return (
     <div ref={wrapperRef}>

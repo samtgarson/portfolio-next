@@ -8,7 +8,7 @@ import { Colors, Theme } from '~/styles/theme'
 const Footer = styled.footer((props: Colors) => ({
   position: `fixed`,
   right: padding / 2,
-  bottom: `100vh`,
+  bottom: 0,
   width: `100vh`,
   height: padding,
   padding: `0 ${padding}px`,
@@ -27,6 +27,7 @@ const Footer = styled.footer((props: Colors) => ({
 
   a: {
     textDecoration: `none`,
+    fontSize: `0.9rem`,
     pointerEvents: `auto`,
     [bigScreen]: {
       ...line(props.fg, `after`)

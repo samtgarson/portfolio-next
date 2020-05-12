@@ -26,6 +26,7 @@ const Title = styled.h1((props: Colors) => ({
   lineHeight: `1em`,
   fontVariationSettings: `'whgt' 100, 'wdth' 100`,
   textTransform: `uppercase`,
+  fontSize: `0.9rem`,
   margin: 0
 }))
 
@@ -52,13 +53,13 @@ export const NavBar = () => {
       </TitleWrapper>
       <LinkWrapper>
         <a href="https://github.com/samtgarson">
-          <GitHub size="1.2em" color={colors.fg} />
+          <GitHub size="1em" color={colors.fg} />
         </a>
         <a href="https://twitter.com/samtgarson">
-          <Twitter size="1.2em" color={colors.fg} />
+          <Twitter size="1em" color={colors.fg} />
         </a>
         <a href="https://instagram.com/samtgarson">
-          <Instagram size="1.2em" color={colors.fg} />
+          <Instagram size="1em" color={colors.fg} />
         </a>
       </LinkWrapper>
     </Nav>

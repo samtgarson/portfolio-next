@@ -16,8 +16,10 @@ const themes: Record<string, Colors> = {
   [Themes.White]: { bg: 'white', fg: 'black' }
 }
 
+export const defaultTheme = themes[Themes.White]
+
 const useTheme = () => {
-  const [colors, _setTheme] = useState<Colors>(themes.dark)
+  const [colors, _setTheme] = useState<Colors>(defaultTheme)
   const setTheme = (theme: Themes) => {
     if (themes[theme]) _setTheme(themes[theme])
   }

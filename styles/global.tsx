@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Global } from '@emotion/react'
-import { Theme } from './theme'
+import { Theme, defaultTheme } from './theme'
 
 export const GlobalStyles = () => {
   const { colors } = Theme.useContainer()
@@ -9,19 +9,18 @@ export const GlobalStyles = () => {
     <Global
       styles={{
         'html, body': {
-          backgroundColor: `black`,
+          backgroundColor: defaultTheme.bg,
           color: colors.fg,
           fontFamily: 'studiofeixen-variable, serif',
-          fontSize: '12px',
+          fontSize: '15px',
           fontVariationSettings: `'wdth' 0, 'wght' 0`,
           margin: 0,
-          padding: 0
-        },
-        body: {
-          perspective: 2
+          padding: 0,
+          WebkitFontSmoothing: `antialiased`,
+          MozOsxFontSmoothing: `grayscale`
         },
         'p, h1, h2, h3, a, span': {
-          transition: `.2s color ease`
+          transition: `.6s color .2s ease`
         },
         a: {
           color: `inherit`

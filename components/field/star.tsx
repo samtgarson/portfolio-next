@@ -21,7 +21,7 @@ type StarProps = {
 
 const symbols = ['\u25B4', '\u25CF', '\u25A0']
 const symbol = (i: number) => symbols[i % symbols.length]
-const delay = (i: number) => 1 + (i * 0.3)
+const delay = (i: number) => 1 + (i/2 * 0.3)
 
 const wrapperVariants: Variants = {
   initial: {},
