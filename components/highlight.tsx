@@ -18,9 +18,10 @@ const HighlightWrapper = styled.div({
 type HighlightProps = {
   text: string
   delay?: number
+  visible?: boolean
 }
 
-export const Highlight: FunctionComponent<HighlightProps> = ({ text, delay = 0, ...props }) => {
+export const Highlight: FunctionComponent<HighlightProps> = ({ text, delay = 0, visible = true, ...props }) => {
   return (
     <HighlightWrapper {...props}>
       <Title
@@ -28,8 +29,9 @@ export const Highlight: FunctionComponent<HighlightProps> = ({ text, delay = 0, 
         stretch={true}
         text={text}
         delay={delay}
+        visible={visible}
       />
-      <Title delay={delay + 0.1} text={text} />
+      <Title visible={visible} delay={delay + 0.1} text={text} />
     </HighlightWrapper>
   )
 }

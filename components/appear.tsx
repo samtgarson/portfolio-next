@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { motion, Variants } from 'framer-motion'
 import { Theme } from '~/styles/theme'
@@ -12,19 +12,16 @@ type AppearOpts = {
 
 const Line = styled(motion.div)({
   overflow: `hidden`,
-  display: `flex`,
-  '&.stretch': {
-    fontVariationSettings: `'wdth' 100, 'wght' 0`
-  }
+  display: `flex`
 })
 
 const frameVariants: Variants = {
   initial: ({ align, stretch }: AppearOpts) => ({
     justifyContent: align,
-    fontVariationSettings: stretch ? `'wdth' -80, 'wght' 0` : `inherit`
+    fontVariationSettings: stretch ? `'wdth' 100, 'wght' 0` : `inherit`
   }),
   animate: ({ delay = 0, stretch }: AppearOpts) => ({
-    fontVariationSettings: stretch ? [`'wdth' -80, 'wght' 0`, `'wdth' 100, 'wght' 0`, `'wdth' -80, 'wght' 0`] : `inherit`,
+    fontVariationSettings: stretch ? [`'wdth' 100, 'wght' 0`, `'wdth' -80, 'wght' 0`, `'wdth' 100, 'wght' 0`] : `inherit`,
     transition: {
       staggerChildren: 0.05,
       loop: `Infinity`,
@@ -47,6 +44,7 @@ const childVariants: Variants = {
 
 type AppearProps = {
   text: string
+  visible?: boolean
   className?: string
   align?: AppearOpts['align']
   delay?: AppearOpts['delay']
@@ -54,21 +52,17 @@ type AppearProps = {
   stretch?: boolean
 }
 
-export const Appear = ({ text, className = '', delay, align, outline, stretch }: AppearProps) => {
+export const Appear = ({ text, visible = true, className = '', delay, align, outline, stretch }: AppearProps) => {
   const { colors } = Theme.useContainer()
   const arr = React.useMemo(() => Array.from(text), [text])
-  const [initial, setInitial] = useState<string>('disabled for users without js')
-
-  useEffect(() => setInitial('initial'), [])
 
   return (
     <Line
-      key={initial}
       className={[className, stretch ? `stretch` : ''].join(' ')}
       variants={frameVariants}
       custom={{ align, delay, stretch }}
-      animate='animate'
-      initial={initial}
+      animate={ visible ? `animate` : `initial` }
+      initial='initial'
     >{
       arr.map((s, i) => (
         <motion.div
