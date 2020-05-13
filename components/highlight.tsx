@@ -19,6 +19,7 @@ type HighlightProps = {
   text: string
   delay?: number
   visible?: boolean
+  className?: string
 }
 
 export const Highlight: FunctionComponent<HighlightProps> = ({ text, delay = 0, visible = true, ...props }) => {

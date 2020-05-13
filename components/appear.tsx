@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from '@emotion/styled'
 import { motion, Variants } from 'framer-motion'
 import { Theme } from '~/styles/theme'
 import { textStroke } from '~/styles/mixins'
+import { cx, css } from '@emotion/css'
+import { stretchAnimation } from '~/styles/animations'
 
 type AppearOpts = {
   delay?: number
@@ -12,23 +14,17 @@ type AppearOpts = {
 
 const Line = styled(motion.div)({
   overflow: `hidden`,
-  display: `flex`
+  display: `flex`,
+  '&.stretch': stretchAnimation
 })
 
 const frameVariants: Variants = {
-  initial: ({ align, stretch }: AppearOpts) => ({
-    justifyContent: align,
-    fontVariationSettings: stretch ? `'wdth' 100, 'wght' 0` : `inherit`
-  }),
-  animate: ({ delay = 0, stretch }: AppearOpts) => ({
-    fontVariationSettings: stretch ? [`'wdth' 100, 'wght' 0`, `'wdth' -80, 'wght' 0`, `'wdth' 100, 'wght' 0`] : `inherit`,
+  initial: {},
+  animate: ({ delay = 0 }: AppearOpts) => ({
     transition: {
       staggerChildren: 0.05,
-      loop: `Infinity`,
       delayChildren: delay,
-      delay,
-      ease: `anticipate`,
-      duration: 3
+      delay
     }
   })
 }
@@ -52,24 +48,26 @@ type AppearProps = {
   stretch?: boolean
 }
 
-export const Appear = ({ text, visible = true, className = '', delay, align, outline, stretch }: AppearProps) => {
+export const Appear = ({ text, visible = true, className = '', delay = 0, align = 'flex-start', outline, stretch }: AppearProps) => {
   const { colors } = Theme.useContainer()
-  const arr = React.useMemo(() => Array.from(text), [text])
+  const arr = useMemo(() => Array.from(text), [text])
+  const lineStyles = useMemo(() => ({
+    color: outline ? colors.bg : colors.fg,
+    animationDelay: `${delay}s`,
+    justifyContent: align,
+    ...(outline ? textStroke(colors.fg) : {})
+  }), [delay, align, colors])
 
   return (
     <Line
-      className={[className, stretch ? `stretch` : ''].join(' ')}
+      className={cx(className, css(lineStyles), { stretch })}
       variants={frameVariants}
-      custom={{ align, delay, stretch }}
+      custom={{ delay }}
       animate={ visible ? `animate` : `initial` }
       initial='initial'
     >{
       arr.map((s, i) => (
         <motion.div
-          style={{
-            color: outline ? colors.bg : colors.fg,
-            ...(outline ? textStroke(colors.fg) : {})
-          }}
           variants={childVariants}
           key={`${text}-${i}`}
         >

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import styled from "@emotion/styled"
 import { Theme } from "~/styles/theme"
 import { AnimatePresence, Variants, motion } from "framer-motion"
+import { css } from '@emotion/css'
 
-const INITIAL_SIZE = 40
+const INITIAL_SIZE = 10
 const DURATION = 0.3
 
 const Circle = styled(motion.div)({
@@ -18,7 +19,7 @@ const Circle = styled(motion.div)({
 
 const variants: Variants = {
   initial: {
-    clipPath: `circle(${INITIAL_SIZE}px at 30px 30px)`
+    clipPath: `circle(${INITIAL_SIZE}px at 40px 35px)`
   },
   animate: (size: number) => ({
     clipPath: `circle(${size * 2}px at 30px 30px)`,
@@ -47,7 +48,7 @@ export const Background = () => {
   return (
     <AnimatePresence initial={false}>
       <Circle
-        style={{ backgroundColor: colors.bg }}
+        className={css({ backgroundColor: colors.bg })}
         key={colors.bg}
         custom={size}
         variants={variants}

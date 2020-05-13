@@ -3,11 +3,14 @@ import { Point } from "./util"
 import { FunctionComponent } from "react"
 import styled from '@emotion/styled'
 import { motion, Variants } from 'framer-motion'
+import { floatAnimation } from '~/styles/animations'
+import { css } from '@emotion/css'
 
-const StarWrapper = styled(motion.div)({
+const StarWrapper = styled.div({
   overflow: `hidden`,
   position: `absolute`,
-  fontFamily: `sans-serif`
+  fontFamily: `sans-serif`,
+  ...floatAnimation
 })
 
 const StyledStar = styled(motion.div)({
@@ -22,19 +25,6 @@ type StarProps = {
 const symbols = ['\u25B4', '\u25CF', '\u25A0']
 const symbol = (i: number) => symbols[i % symbols.length]
 const delay = (i: number) => 1 + (i/2 * 0.3)
-
-const wrapperVariants: Variants = {
-  initial: {},
-  animate: (i: number) => ({
-    y: [-3, 3, -3],
-    transition: {
-      duration: 3,
-      loop: `Infinity`,
-      delay: delay(i),
-      ease: `easeInOut`
-    }
-  })
-}
 
 const variants: Variants = {
   initial: {
@@ -51,7 +41,9 @@ const variants: Variants = {
 }
 
 export const Star: FunctionComponent<StarProps> = ({ p: [x, y], i }) => (
-  <StarWrapper style={{ left: x, top: y }} custom={i} variants={wrapperVariants} animate='animate' initial='initial'>
-    <StyledStar variants={variants} custom={i}> { `${symbol(i)}` }</StyledStar>
+  <StarWrapper style={{ left: x, top: y }} className={css({ animationDelay: `${delay(i)}s` })}>
+    <StyledStar variants={variants} custom={i} animate='animate' initial='initial'>
+      { `${symbol(i)}` }
+    </StyledStar>
   </StarWrapper>
 )
