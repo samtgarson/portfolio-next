@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styled from "@emotion/styled"
 import { Theme } from "~/styles/theme"
-import { AnimatePresence, Variants, motion } from "framer-motion"
 import { css } from '@emotion/css'
 
 const INITIAL_SIZE = 10
 const DURATION = 0.3
 
-const Circle = styled(motion.div)({
+const Circle = styled.div({
   zIndex: 0,
   pointerEvents: `none`,
   position: `fixed`,
@@ -17,24 +16,8 @@ const Circle = styled(motion.div)({
   right: 0
 })
 
-const variants: Variants = {
-  initial: {
-    clipPath: `circle(${INITIAL_SIZE}px at 40px 35px)`
-  },
-  animate: (size: number) => ({
-    clipPath: `circle(${size * 2}px at 30px 30px)`,
-    transition: {
-      type: "spring",
-      stiffness: 10
-    }
-  }),
-  exit: (size: number) => ({
-    clipPath: `circle(${size * 2}px at 30px 30px)`,
-    transition: {
-      duration: DURATION
-    }
-  })
-}
+    /* clipPath: `circle(${INITIAL_SIZE}px at 40px 35px)` */
+    /* clipPath: `circle(${size * 2}px at 30px 30px)`, */
 
 export const Background = () => {
   const { colors } = Theme.useContainer()
@@ -46,16 +29,9 @@ export const Background = () => {
   }, [colors])
 
   return (
-    <AnimatePresence initial={false}>
-      <Circle
-        className={css({ backgroundColor: colors.bg })}
-        key={colors.bg}
-        custom={size}
-        variants={variants}
-        initial='initial'
-        animate='animate'
-        exit='exit'
-      />
-    </AnimatePresence>
+    <Circle
+      className={css({ backgroundColor: colors.bg })}
+      key={colors.bg}
+    />
   )
 }

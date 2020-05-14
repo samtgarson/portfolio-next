@@ -3,9 +3,8 @@ import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import { getPoints, Bounds, Point, bufferedSetBounds } from './util'
 import { Star } from './star'
-import { motion } from 'framer-motion'
 
-const FieldWrapper = styled(motion.div)({
+const FieldWrapper = styled.div({
   pointerEvents: `none`
 })
 

@@ -49,6 +49,7 @@ const _textStroke = (color: string, w: number) => `
 
 export const textStroke = (color: string) => ({
   textShadow: _textStroke(color, 1),
+  transition: `textShadow .2s ease`,
   [smallScreen]: {
     textShadow: _textStroke(color, 0.5)
   }
