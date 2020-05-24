@@ -26,3 +26,5 @@ export const useIntersection = (
 
   return intersectionObserverEntry
 }
+
+export const intersectionEnabled = typeof window !== 'undefined' && 'IntersectionObserver' in window

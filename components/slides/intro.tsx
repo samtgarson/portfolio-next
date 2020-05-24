@@ -3,8 +3,6 @@ import styled from '@emotion/styled'
 import { Appear } from '~/components/appear'
 import { Disappear } from '~/components/disappear'
 import { Field } from '../field'
-import { useThemedSection } from '~/util/use-themed-section'
-import { Themes } from '~/styles/theme'
 import { staticFontSize } from '~/styles/mixins'
 
 const IntroField = styled(Field)({
@@ -31,10 +29,9 @@ const Title = styled(Appear)({
 const intro = ['I build', 'teams', 'that build', 'things.']
 
 export const Intro = () => {
-  const wrapperRef = useThemedSection(Themes.White)
 
   return (
-    <div ref={wrapperRef}>
+    <div>
       <Disappear friction={0.8} height={400}>
         <IntroField />
       </Disappear>

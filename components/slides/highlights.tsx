@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from "@emotion/styled"
-import { useThemedSection } from "~/util/use-themed-section"
-import { Themes } from "~/styles/theme"
 import { staticFontSize } from "~/styles/mixins"
 import { Highlight } from '~/components/highlight'
-import { useIntersection } from '~/util/use-intersection'
-import { css } from '@emotion/css'
+import { useIntersection, intersectionEnabled } from '~/util/use-intersection'
 
 const HighlightsWrapper = styled.div({
   padding: `30px 0 30px 30px`,
@@ -21,11 +18,12 @@ const Subtitle = styled.p({
 
 const highlights = ['London based', 'product focused', 'tech lead']
 export const Highlights = () => {
-  const wrapperRef = useThemedSection(Themes.Dark)
+  const wrapperRef = useRef(null)
   const inView = useIntersection(wrapperRef, { threshold: 0.5 })
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
+    if (!intersectionEnabled) return setVisible(true)
     if (!inView) return
 
     setVisible(inView.isIntersecting)

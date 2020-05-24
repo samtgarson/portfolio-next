@@ -20,7 +20,7 @@ export const GlobalStyles = () => {
           MozOsxFontSmoothing: `grayscale`
         },
         'p, h1, h2, h3, a, span': {
-          transition: `.6s color .2s ease`
+          transition: `.5s color ease`
         },
         a: {
           color: `inherit`
