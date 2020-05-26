@@ -17,13 +17,20 @@ export const GlobalStyles = () => {
           margin: 0,
           padding: 0,
           WebkitFontSmoothing: `antialiased`,
-          MozOsxFontSmoothing: `grayscale`
+          MozOsxFontSmoothing: `grayscale`,
+          '--fgColor': colors.fg,
+          '--bgColor': colors.bg,
+          '--accentColor': colors.accent
         },
         'p, h1, h2, h3, a, span': {
           transition: `.5s color ease`
         },
         a: {
-          color: `inherit`
+          color: `inherit`,
+          transition: `font-variation-settings .5s ease-out`
+        },
+        'a: hover': {
+          fontVariationSettings: `'wdth' 100, 'wght' 0`
         }
       }}
     />

@@ -4,6 +4,7 @@ import { useState } from 'react'
 export interface Colors {
   bg: string
   fg: string
+  accent: string
 }
 
 export enum Themes {
@@ -12,8 +13,8 @@ export enum Themes {
 }
 
 const themes: Record<string, Colors> = {
-  [Themes.Dark]: { bg: 'black', fg: 'white' },
-  [Themes.White]: { bg: 'white', fg: 'black' }
+  [Themes.Dark]: { bg: 'black', fg: 'white', accent: 'rgba(238, 237, 233, 0.4)' },
+  [Themes.White]: { bg: 'rgb(238, 237, 233)', fg: 'black', accent: 'white' }
 }
 
 export const defaultTheme = themes[Themes.White]

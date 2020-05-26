@@ -5,7 +5,7 @@ import { SwitchTransition, Transition } from 'react-transition-group'
 import { ENTERING } from 'react-transition-group/Transition'
 
 const INITIAL_SIZE = 5
-const DURATION = 400
+const DURATION = 800
 
 const Circle = styled.div({
   zIndex: 0,

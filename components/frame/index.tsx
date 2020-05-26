@@ -3,9 +3,8 @@ import { NavBar } from './nav-bar'
 import styled from '@emotion/styled'
 import { bigScreen, smallScreen, padding } from '~/styles/vars'
 import { dot, line } from '~/styles/mixins'
-import { Colors, Theme } from '~/styles/theme'
 
-const Footer = styled.footer((props: Colors) => ({
+const Footer = styled.footer({
   position: `fixed`,
   right: padding / 2,
   bottom: 0,
@@ -23,28 +22,27 @@ const Footer = styled.footer((props: Colors) => ({
   transform: `rotate(90deg)`,
   transformOrigin: `100% 0%`,
 
-  ...dot(props.fg, `0.7rem`),
+  ...dot(`0.7rem`),
 
   a: {
     textDecoration: `none`,
     fontSize: `0.9rem`,
     pointerEvents: `auto`,
     [bigScreen]: {
-      ...line(props.fg, `after`)
+      ...line(`after`)
     },
     [smallScreen]: {
       marginRight: padding / 2
     }
   }
-}))
+})
 
 export const Frame = () => {
-  const { colors } = Theme.useContainer()
 
   return (
     <>
       <NavBar />
-      <Footer {...colors}>
+      <Footer>
         <a href="#contact">Get in touch</a>
       </Footer>
     </>

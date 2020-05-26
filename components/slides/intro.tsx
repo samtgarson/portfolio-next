@@ -4,6 +4,7 @@ import { Appear } from '~/components/appear'
 import { Disappear } from '~/components/disappear'
 import { Field } from '../field'
 import { staticFontSize } from '~/styles/mixins'
+import { css } from '@emotion/css'
 
 const IntroField = styled(Field)({
   position: `absolute`,
@@ -28,27 +29,25 @@ const Title = styled(Appear)({
 
 const intro = ['I build', 'teams', 'that build', 'things.']
 
-export const Intro = () => {
-
-  return (
-    <div>
-      <Disappear friction={0.8} height={400}>
-        <IntroField />
-      </Disappear>
-      <Disappear>
-        <Wrapper>
-          { intro.map((t, i) => (
-            <Title
-              outline={i % 2 === 0}
-              stretch={i % 2 !== 0}
-              text={t}
-              delay={(i + 1) * 0.3}
-              align='center'
-              key={i}
-            />
-          ))}
-        </Wrapper>
-      </Disappear>
-    </div>
-  )
-}
+export const Intro = () => (
+  <div>
+    <Disappear friction={0.8} height={400}>
+      <IntroField />
+      <IntroField className={css({ color: `var(--accentColor)` })} />
+    </Disappear>
+    <Disappear>
+      <Wrapper>
+        { intro.map((t, i) => (
+          <Title
+            outline={i % 2 === 0}
+            stretch={i % 2 !== 0}
+            text={t}
+            delay={(i + 1) * 0.3}
+            align='center'
+            key={i}
+          />
+        ))}
+      </Wrapper>
+    </Disappear>
+  </div>
+)

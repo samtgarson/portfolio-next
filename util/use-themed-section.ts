@@ -8,6 +8,7 @@ export const useThemedSection = <T extends HTMLElement = HTMLDivElement>(before:
   const inView = useIntersection(wrapperRef, { rootMargin: "0px 0px -400px 0px" })
 
   useEffect(() => {
+    if (!inView || inView?.boundingClientRect.y <= 0) return
     if (inView?.isIntersecting) setTheme(after)
     else setTheme(before)
   }, [inView])

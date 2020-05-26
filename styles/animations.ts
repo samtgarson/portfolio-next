@@ -1,4 +1,4 @@
-import { keyframes } from "@emotion/react"
+import { keyframes, CSSObject } from "@emotion/react"
 
 export const stretch = keyframes({
   from: {
@@ -33,7 +33,7 @@ export const floatAnimation = {
   animationFillMode: `both`,
   animationDirection: `alternate`,
   animationIterationCount: `infinite`,
-  animationTimingFunction: `ease-in-out`
+  animationTimingFunction: `cubic-bezier(0.645, 0.045, 0.355, 1.000)`
 }
 
 export const popUp = keyframes({
@@ -45,9 +45,10 @@ export const popUp = keyframes({
   }
 })
 
-export const popUpAnimation = {
+export const popUpAnimation: CSSObject = {
   animationName: popUp,
   animationDuration: `200ms`,
+  animationDirection: `normal`,
   animationFillMode: `both`,
   animationTimingFunction: `cubic-bezier(0.175, 0.885, 0.320, 1.275)`
 }

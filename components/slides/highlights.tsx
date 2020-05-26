@@ -3,20 +3,25 @@ import styled from "@emotion/styled"
 import { staticFontSize } from "~/styles/mixins"
 import { Highlight } from '~/components/highlight'
 import { useIntersection, intersectionEnabled } from '~/util/use-intersection'
+import { css } from '@emotion/css'
+import { Star } from '../field/star'
 
 const HighlightsWrapper = styled.div({
-  padding: `30px 0 30px 30px`,
+  padding: 30,
   position: `relative`,
   marginBottom: `10vh`
 })
 
 const Subtitle = styled.p({
-  fontSize: staticFontSize(3),
-  marginBottom: 20,
-  fontVariationSettings: `'wdth' 30, 'wght' 50`
+  fontSize: staticFontSize(3.6),
+  marginBottom: 20
 })
 
-const highlights = ['London based', 'product focused', 'tech lead']
+const Punct = styled(Star)({
+  verticalAlign: `middle`,
+  marginLeft: `0.3em`
+})
+
 export const Highlights = () => {
   const wrapperRef = useRef(null)
   const inView = useIntersection(wrapperRef, { threshold: 0.5 })
@@ -26,19 +31,22 @@ export const Highlights = () => {
     if (!intersectionEnabled) return setVisible(true)
     if (!inView) return
 
-    setVisible(inView.isIntersecting)
+    setVisible(inView.isIntersecting || inView.boundingClientRect.y <= 0)
   }, [inView])
 
   return (
     <>
       <HighlightsWrapper ref={wrapperRef}>
         <Subtitle>Hey there. I&apos;m a</Subtitle>
-        { highlights.map((t, i) =>
+        { ['London based', 'product focused', 'tech lead'].map((t, i) =>
           <Highlight key={t} text={t} delay={i * 0.3} visible={visible}/>
         ) }
       </HighlightsWrapper>
       <HighlightsWrapper>
-        <Subtitle>Subtitle</Subtitle>
+        <Subtitle className={css({ maxWidth: 800 })}>I&apos;m currently living in London helping <a href="https://sohohouse.com">Soho House</a> build digital products and a culture to support them.</Subtitle>
+        <Subtitle className={css({ maxWidth: 800, marginLeft: `auto` })}>Lately I&apos;ve been thinking a lot about digital transformation and helping teams create an environment safe for building value and innovating
+          {visible && <Punct size="1em" symbol="Hexagon" /> }
+        </Subtitle>
       </HighlightsWrapper>
     </>
   )
