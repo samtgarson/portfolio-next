@@ -14,7 +14,9 @@ const HighlightsWrapper = styled.div({
 
 const Subtitle = styled.p({
   fontSize: staticFontSize(3.6),
-  marginBottom: 20
+  marginBottom: 20,
+  width: `60vw`,
+  minWidth: `min(600px, 100%)`
 })
 
 const Punct = styled(Star)({
@@ -43,8 +45,8 @@ export const Highlights = () => {
         ) }
       </HighlightsWrapper>
       <HighlightsWrapper>
-        <Subtitle className={css({ maxWidth: 800 })}>I&apos;m currently living in London helping <a href="https://sohohouse.com">Soho House</a> build digital products and a culture to support them.</Subtitle>
-        <Subtitle className={css({ maxWidth: 800, marginLeft: `auto` })}>Lately I&apos;ve been thinking a lot about digital transformation and helping teams create an environment safe for building value and innovating
+        <Subtitle>I&apos;m currently living in London helping <a href="https://sohohouse.com">Soho House</a> build digital products and a culture to support them.</Subtitle>
+        <Subtitle className={css({ marginLeft: `auto` })}>Lately I&apos;ve been thinking a lot about digital transformation and helping teams create an environment safe for building value and innovating
           {visible && <Punct size="1em" symbol="Hexagon" /> }
         </Subtitle>
       </HighlightsWrapper>
