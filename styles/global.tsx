@@ -11,7 +11,7 @@ export const GlobalStyles = () => {
         'html, body': {
           backgroundColor: defaultTheme.bg,
           color: colors.fg,
-          fontFamily: 'studiofeixen-variable, serif',
+          fontFamily: 'studiofeixen-variable, sans-serif',
           fontSize: '15px',
           fontVariationSettings: `'wdth' 0, 'wght' 0`,
           margin: 0,
