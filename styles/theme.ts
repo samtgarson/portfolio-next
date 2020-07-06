@@ -13,7 +13,7 @@ export enum Themes {
 }
 
 const themes: Record<string, Colors> = {
-  [Themes.Dark]: { bg: 'black', fg: 'white', accent: 'rgba(238, 237, 233, 0.4)' },
+  [Themes.Dark]: { bg: 'black', fg: 'white', accent: 'black' },
   [Themes.White]: { bg: 'rgb(238, 237, 233)', fg: 'black', accent: 'white' }
 }
 

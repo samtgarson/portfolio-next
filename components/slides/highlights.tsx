@@ -40,13 +40,13 @@ export const Highlights = () => {
     <>
       <HighlightsWrapper ref={wrapperRef}>
         <Subtitle>Hey there. I&apos;m a</Subtitle>
-        { ['London based', 'product focused', 'tech lead'].map((t, i) =>
+        { ['London based', 'product focused', 'tech lead.'].map((t, i) =>
           <Highlight key={t} text={t} delay={i * 0.3} visible={visible}/>
         ) }
       </HighlightsWrapper>
       <HighlightsWrapper>
         <Subtitle>I&apos;m currently living in London helping <a href="https://sohohouse.com">Soho House</a> build digital products and a culture to support them.</Subtitle>
-        <Subtitle className={css({ marginLeft: `auto` })}>Lately I&apos;ve been thinking a lot about digital transformation and helping teams create an environment safe for building value and innovating
+        <Subtitle className={css({ marginLeft: `auto` })}>Lately I&apos;ve been thinking a lot about digital transformation and helping teams create an environment safe for innovating and building value
           {visible && <Punct size="1em" symbol="Hexagon" /> }
         </Subtitle>
       </HighlightsWrapper>

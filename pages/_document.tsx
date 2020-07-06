@@ -12,7 +12,7 @@ export default class CustomDocument extends Document<EmotionCritical> {
 
   render () {
     return (
-      <html>
+      <html lang="en">
         <Head>
           <style
             data-emotion-css={this.props.ids.join(' ')}

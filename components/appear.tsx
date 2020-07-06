@@ -29,7 +29,7 @@ export const Appear = ({ text, visible = true, className = '', delay = 0, align 
   const arr = useMemo(() => Array.from(text), [text])
 
   const lineStyles = useMemo(() => ({
-    color: outline ? `var( --bgColor )` : `var( --fgColor )`,
+    color: outline ? `var( --accentColor )` : `var( --fgColor )`,
     animationDelay: `${delay}s`,
     justifyContent: align,
     ...(outline ? textStroke : {})

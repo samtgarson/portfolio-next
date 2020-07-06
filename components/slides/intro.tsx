@@ -33,7 +33,6 @@ export const Intro = () => (
   <div>
     <Disappear friction={0.8} height={400}>
       <IntroField />
-      <IntroField className={css({ color: `var(--accentColor)` })} />
     </Disappear>
     <Disappear>
       <Wrapper>

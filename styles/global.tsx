@@ -27,7 +27,7 @@ export const GlobalStyles = () => {
         },
         a: {
           color: `inherit`,
-          transition: `font-variation-settings .5s ease-out`
+          transition: `font-variation-settings .3s ease`
         },
         'a: hover': {
           fontVariationSettings: `'wdth' 100, 'wght' 0`

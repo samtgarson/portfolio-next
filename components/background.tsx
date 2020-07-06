@@ -4,8 +4,7 @@ import { Theme } from "~/styles/theme"
 import { SwitchTransition, Transition } from 'react-transition-group'
 import { ENTERING } from 'react-transition-group/Transition'
 
-const INITIAL_SIZE = 5
-const DURATION = 800
+const DURATION = 400
 
 const Circle = styled.div({
   zIndex: 0,
@@ -15,22 +14,17 @@ const Circle = styled.div({
   left: 0,
   bottom: 0,
   right: 0,
-  transition: `clip-path ${DURATION}ms ease-in`
+  transition: `transform ${DURATION}ms ease-in-out`,
+  transformOrigin: `0`
 })
 
-const createInitialStyle = (backgroundColor: string) => ({ clipPath: `circle(${INITIAL_SIZE}px at 35px 35px)`, backgroundColor })
-const createDefaultStyle = (size: number, backgroundColor: string) => ({ clipPath: `circle(${size * 2}px at 35px 35px)`, backgroundColor })
+const createInitialStyle = (backgroundColor: string) => ({ transform: `scaleX(0)`, backgroundColor })
+const createDefaultStyle = (backgroundColor: string) => ({ transform: `scaleX(1)`, backgroundColor })
 
 export const Background = () => {
   const { colors } = Theme.useContainer()
-  const [size, setSize] = useState(0)
   const initialStyle = useMemo(() => createInitialStyle(colors.bg), [colors])
-  const defaultStyle = useMemo(() => createDefaultStyle(size, colors.bg), [size, colors])
-
-  useEffect(() => {
-    // pythag to get the diagonal size of the window
-    setSize(Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2))
-  }, [colors])
+  const defaultStyle = useMemo(() => createDefaultStyle(colors.bg), [colors])
 
   return (
     <SwitchTransition mode='in-out'>

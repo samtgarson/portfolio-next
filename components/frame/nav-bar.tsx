@@ -23,7 +23,7 @@ const TitleWrapper = styled.div({
 const Title = styled.h1({
   ...dot(`0.9em`, `before`, { marginRight: `0.9em` }),
   lineHeight: `1em`,
-  fontVariationSettings: `'whgt' 100, 'wdth' 100`,
+  fontVariationSettings: `'wght' 400, 'wdth' 100`,
   textTransform: `uppercase`,
   fontSize: `0.9rem`,
   margin: 0
