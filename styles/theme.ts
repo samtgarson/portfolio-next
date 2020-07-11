@@ -9,12 +9,14 @@ export interface Colors {
 
 export enum Themes {
   Dark = 'dark',
-  White = 'white'
+  White = 'white',
+  Bright = 'bright'
 }
 
 const themes: Record<string, Colors> = {
-  [Themes.Dark]: { bg: 'black', fg: 'white', accent: 'black' },
-  [Themes.White]: { bg: 'rgb(238, 237, 233)', fg: 'black', accent: 'white' }
+  [Themes.Dark]: { bg: 'black', fg: 'white', accent: '#19191C' },
+  [Themes.White]: { bg: '#EEEDE9', fg: 'black', accent: 'white' },
+  [Themes.Bright]: { bg: '#1502ff', fg: 'white', accent: 'white' }
 }
 
 export const defaultTheme = themes[Themes.White]

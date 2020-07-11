@@ -53,6 +53,7 @@ const _textStroke = (color: string, w: number) => `
 
 export const textStroke = {
   textShadow: _textStroke('var(--fgColor)', 1),
+  color: `var(--accentColor)`,
   transition: `textShadow .2s ease`,
   [smallScreen]: {
     textShadow: _textStroke('var(--fgColor)', 0.5)

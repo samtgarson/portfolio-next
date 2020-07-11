@@ -48,13 +48,13 @@ export const NavBar = () => (
       <Title>Sam Garson</Title>
     </TitleWrapper>
     <LinkWrapper>
-      <a href="https://github.com/samtgarson">
+      <a href="https://github.com/samtgarson" aria-label="Github Profile">
         <GitHub size="1em" color="currentColor" />
       </a>
-      <a href="https://twitter.com/samtgarson">
+      <a href="https://twitter.com/samtgarson" aria-label="Twitter Profile">
         <Twitter size="1em" color="currentColor" />
       </a>
-      <a href="https://instagram.com/samtgarson">
+      <a href="https://instagram.com/samtgarson" aria-label="Instagram Profile">
         <Instagram size="1em" color="currentColor" />
       </a>
     </LinkWrapper>

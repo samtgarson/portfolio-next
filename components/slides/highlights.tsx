@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from "@emotion/styled"
 import { staticFontSize } from "~/styles/mixins"
+import { padding } from '~/styles/vars'
 import { Highlight } from '~/components/highlight'
 import { useIntersection, intersectionEnabled } from '~/util/use-intersection'
-import { css } from '@emotion/css'
 import { Star } from '../field/star'
 
 const HighlightsWrapper = styled.div({
-  padding: 30,
+  padding,
   position: `relative`,
   marginBottom: `10vh`
 })
@@ -27,9 +27,10 @@ const Punct = styled(Star)({
 export const Highlights = () => {
   const wrapperRef = useRef(null)
   const inView = useIntersection(wrapperRef, { threshold: 0.5 })
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
+    setVisible(false)
     if (!intersectionEnabled) return setVisible(true)
     if (!inView) return
 
@@ -46,7 +47,7 @@ export const Highlights = () => {
       </HighlightsWrapper>
       <HighlightsWrapper>
         <Subtitle>I&apos;m currently living in London helping <a href="https://sohohouse.com">Soho House</a> build digital products and a culture to support them.</Subtitle>
-        <Subtitle className={css({ marginLeft: `auto` })}>Lately I&apos;ve been thinking a lot about digital transformation and helping teams create an environment safe for innovating and building value
+        <Subtitle style={{ marginLeft: `auto` }}>I enjoy helping teams work with intention and agency, and create an environment safe for innovating and building value
           {visible && <Punct size="1em" symbol="Hexagon" /> }
         </Subtitle>
       </HighlightsWrapper>

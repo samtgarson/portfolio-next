@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import styled from "@emotion/styled"
 import { Theme } from "~/styles/theme"
 import { SwitchTransition, Transition } from 'react-transition-group'
@@ -7,7 +7,7 @@ import { ENTERING } from 'react-transition-group/Transition'
 const DURATION = 400
 
 const Circle = styled.div({
-  zIndex: 0,
+  zIndex: -1,
   pointerEvents: `none`,
   position: `fixed`,
   top: 0,
@@ -30,7 +30,7 @@ export const Background = () => {
     <SwitchTransition mode='in-out'>
       <Transition
         key={colors.bg}
-        timeout={DURATION / 2}
+        timeout={DURATION}
       >
         {state => <Circle style={state === ENTERING ? initialStyle : defaultStyle} />}
       </Transition>

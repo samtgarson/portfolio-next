@@ -1,19 +1,25 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, memo } from 'react'
 import styled from '@emotion/styled'
 import { textStroke } from '~/styles/mixins'
-import { cx, css } from '@emotion/css'
+import { cx } from '@emotion/css'
 import { stretchAnimation, popUpAnimation } from '~/styles/animations'
 
-const Line = styled.div({
-  overflow: `hidden`,
-  display: `flex`,
-  '&.stretch': stretchAnimation
-})
+const Line = styled.span(
+  ({ delay, align }: Pick<AppearProps, "align" | "delay">) => ({
+    overflow: `hidden`,
+    display: `flex`,
+    '&.stretch': stretchAnimation(delay),
+    '&.outline': textStroke,
+    justifyContent: align
+  })
+)
 
-const Letter = styled.div({
+const Letter = styled.span(({ delay, i }: { delay: number, i: number }) => ({
   transform: `translateY(120%) rotate(var(--initial-rotate, -360deg))`,
-  '.visible &': popUpAnimation
-})
+  transition: `.5s color ease, .2s textShadow ease`,
+  '.visible &': popUpAnimation(delay + i * 0.05),
+  '--initial-rotate': `0deg`
+}))
 
 type AppearProps = {
   text:       string
@@ -25,23 +31,18 @@ type AppearProps = {
   outline?:   boolean
 }
 
-export const Appear = ({ text, visible = true, className = '', delay = 0, align = 'flex-start', outline, stretch }: AppearProps) => {
+export const _Appear = ({ text, visible = true, className = '', delay = 0, align = 'flex-start', outline, stretch }: AppearProps) => {
   const arr = useMemo(() => Array.from(text), [text])
 
-  const lineStyles = useMemo(() => ({
-    color: outline ? `var( --accentColor )` : `var( --fgColor )`,
-    animationDelay: `${delay}s`,
-    justifyContent: align,
-    ...(outline ? textStroke : {})
-  }), [delay, align])
-
   return (
-    <Line className={cx(className, css(lineStyles), { stretch, visible })}>{
+    <Line className={cx(className, { stretch, visible, outline })} delay={delay} align={align} aria-label={text} >{
       arr.map((s, i) => (
-        <Letter key={`${text}-${i}`} style={{ animationDelay: `${delay + i * 0.05}s`, '--initial-rotate': `0deg` }}>
+        <Letter key={`${text}-${i}`} delay={delay} i={i} aria-hidden="true">
           {s === ' ' ? `\u00a0` : s}
         </Letter>
       ))
     }</Line>
   )
 }
+
+export const Appear = memo(_Appear)

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Global } from '@emotion/react'
-import { Theme, defaultTheme } from './theme'
+import { Theme } from './theme'
 
 export const GlobalStyles = () => {
   const { colors } = Theme.useContainer()
@@ -9,21 +9,19 @@ export const GlobalStyles = () => {
     <Global
       styles={{
         'html, body': {
-          backgroundColor: defaultTheme.bg,
           color: colors.fg,
           fontFamily: 'studiofeixen-variable, sans-serif',
           fontSize: '15px',
+          lineHeight: 1.3,
           fontVariationSettings: `'wdth' 0, 'wght' 0`,
           margin: 0,
           padding: 0,
           WebkitFontSmoothing: `antialiased`,
           MozOsxFontSmoothing: `grayscale`,
+          transition: `.5s color .2s ease`,
           '--fgColor': colors.fg,
           '--bgColor': colors.bg,
           '--accentColor': colors.accent
-        },
-        'p, h1, h2, h3, a, span': {
-          transition: `.5s color ease`
         },
         a: {
           color: `inherit`,
@@ -31,6 +29,9 @@ export const GlobalStyles = () => {
         },
         'a: hover': {
           fontVariationSettings: `'wdth' 100, 'wght' 0`
+        },
+        p: {
+          lineHeight: 1.8
         }
       }}
     />
