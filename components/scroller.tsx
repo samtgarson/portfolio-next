@@ -29,7 +29,7 @@ const ScrollerWrapper = styled.div({
   }
 })
 
-const _Scroller: FunctionComponent<ScrollerProps> = ({ text, className }) => (
+export const Scroller: FunctionComponent<ScrollerProps> = ({ text, className }) => (
   <ScrollerWrapper className={className}>
     <h3 aria-label={text}>
       {[...Array(COUNT)].map((_, i) => (
@@ -39,4 +39,3 @@ const _Scroller: FunctionComponent<ScrollerProps> = ({ text, className }) => (
   </ScrollerWrapper>
 )
 
-export const Scroller = memo(_Scroller)

@@ -1,5 +1,5 @@
 import { createContainer } from 'unstated-next'
-import { useState } from 'react'
+import { useState, useMemo, useCallback, useEffect } from 'react'
 
 export interface Colors {
   bg: string
@@ -13,21 +13,64 @@ export enum Themes {
   Bright = 'bright'
 }
 
+let running: boolean
+
+const throttle = (fn: Function, ms: number) => () => {
+  if (running) return
+  running = true
+  fn()
+  setTimeout(() => { running = false }, ms)
+}
+
 const themes: Record<string, Colors> = {
   [Themes.Dark]: { bg: 'black', fg: 'white', accent: '#19191C' },
   [Themes.White]: { bg: '#EEEDE9', fg: 'black', accent: 'white' },
   [Themes.Bright]: { bg: '#1502ff', fg: 'white', accent: 'white' }
 }
 
-export const defaultTheme = themes[Themes.White]
+type Breaks = [number, Themes][]
 
-const useTheme = () => {
-  const [colors, _setTheme] = useState<Colors>(defaultTheme)
-  const setTheme = (theme: Themes) => {
-    if (themes[theme]) _setTheme(themes[theme])
+const findBreak = (set: (t: Themes) => void, current: Themes, breaks: Breaks) => {
+  let theme: Themes = defaultTheme
+  const threshold = window.scrollY + window.innerHeight/2
+
+  for (const [brk, color] of breaks) {
+    if (brk < threshold) {
+      theme = color
+    } else {
+      break
+    }
   }
 
-  return { colors, setTheme }
+  if (current != theme) set(theme)
+}
+
+export const defaultTheme = Themes.White
+
+const breaks: Breaks = []
+
+const useTheme = () => {
+  const [theme, setTheme] = useState<Themes>(defaultTheme)
+  const colors = useMemo(() => themes[theme], [theme])
+
+  const setBreak = (brk: number, color: Themes) => {
+    breaks.push([brk, color])
+  }
+
+  const scrollHandler = useMemo(
+    () => throttle(() => findBreak(setTheme, theme, breaks), 300),
+    [setTheme, theme]
+  )
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollHandler, { passive: true })
+    scrollHandler()
+
+    return () => window.removeEventListener('scroll', scrollHandler)
+  }, [scrollHandler])
+
+
+  return { colors, theme, setTheme, breaks, setBreak }
 }
 
 export const Theme = createContainer(useTheme)

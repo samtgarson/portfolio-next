@@ -46,14 +46,13 @@ export const popUp = keyframes({
   }
 })
 
-export const popUpAnimation = (delay = 0): CSSObject => ({
+export const popUpAnimation: CSSObject = {
   animationName: popUp,
   animationDuration: `200ms`,
-  animationDelay: `${delay}s`,
   animationDirection: `normal`,
   animationFillMode: `both`,
   animationTimingFunction: `cubic-bezier(0.175, 0.885, 0.320, 1.275)`
-})
+}
 
 export const scroll = (initial: number, final: number) => keyframes({
   from: {

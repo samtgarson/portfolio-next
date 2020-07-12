@@ -1,11 +1,9 @@
-import React from 'react'
-import { Themes } from "~/styles/theme"
-import { useThemedSection } from "~/util/use-themed-section"
+import React, { useRef, useEffect } from 'react'
+import { Themes, Theme } from "~/styles/theme"
 import styled from "@emotion/styled"
 
 type ThemeDividerProps = {
-  before: Themes
-  after: Themes
+  theme: Themes
 }
 
 const Divider = styled.div({
@@ -13,8 +11,14 @@ const Divider = styled.div({
   height: 1
 })
 
-export const ThemeDivider = ({ before, after }: ThemeDividerProps) => {
-  const ref = useThemedSection(before, after)
+export const ThemeDivider = ({ theme }: ThemeDividerProps) => {
+  const { setBreak } = Theme.useContainer()
+  const ref = useRef<HTMLDivElement>(null)
 
-  return <Divider ref={ref} />
+  useEffect(() => {
+    if (!ref.current) return
+    setBreak(ref.current.offsetTop, theme)
+  }, [])
+
+  return <Divider className="theme-divider" ref={ref} />
 }

@@ -3,7 +3,6 @@ import React, { memo } from 'react'
 import styled from '@emotion/styled'
 import { padding, smallScreen } from '~/styles/vars'
 import { Scroller } from '../scroller'
-import { staticFontSize } from '~/styles/mixins'
 import { Star } from '../field/star'
 
 const ideas: [string, string, JSX.Element | null][] = [
@@ -30,7 +29,7 @@ const Wrapper = styled.div({
   borderRadius: 5,
   margin: `${padding * 2}px auto`,
   width: `90vw`,
-  maxWidth: 600,
+  maxWidth: 700,
   [smallScreen]: {
     width: `85vw`,
     padding: padding / 2
@@ -55,7 +54,7 @@ const List = styled.ol({
     margin: 0,
     display: `inline-block`,
     fontWeight: `normal`,
-    fontSize: staticFontSize(3.6),
+    fontSize: `2.5rem`,
     fontVariationSettings: `'wght' 400, 'wdth' 0`,
     strong: {
       fontWeight: `normal`,
@@ -90,7 +89,7 @@ const Ideas = () => {
         { items }
       </List>
       <div style={{ textAlign: "center" }}>
-        <Punct size="2vh" symbol="Hexagon" />
+        <Punct size="20" symbol="Hexagon" />
       </div>
     </Wrapper>
   )

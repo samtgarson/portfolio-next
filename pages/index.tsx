@@ -9,9 +9,9 @@ import Ideas from '~/components/slides/ideas'
 const Home = () => (
   <>
     <Intro />
-    <ThemeDivider before={Themes.White} after={Themes.Dark} />
+    <ThemeDivider theme={Themes.Dark} />
     <Highlights />
-    <ThemeDivider before={Themes.Dark} after={Themes.White} />
+    <ThemeDivider theme={Themes.White} />
     <Ideas />
   </>
 )

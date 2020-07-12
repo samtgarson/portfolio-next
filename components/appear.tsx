@@ -14,12 +14,12 @@ const Line = styled.span(
   })
 )
 
-const Letter = styled.span(({ delay, i }: { delay: number, i: number }) => ({
+const Letter = styled.span({
   transform: `translateY(120%) rotate(var(--initial-rotate, -360deg))`,
   transition: `.5s color ease, .2s textShadow ease`,
-  '.visible &': popUpAnimation(delay + i * 0.05),
+  '.visible &': popUpAnimation,
   '--initial-rotate': `0deg`
-}))
+})
 
 type AppearProps = {
   text:       string
@@ -37,7 +37,7 @@ export const _Appear = ({ text, visible = true, className = '', delay = 0, align
   return (
     <Line className={cx(className, { stretch, visible, outline })} delay={delay} align={align} aria-label={text} >{
       arr.map((s, i) => (
-        <Letter key={`${text}-${i}`} delay={delay} i={i} aria-hidden="true">
+        <Letter key={`${text}-${i}`} style={{ animationDelay: `${delay + i * 0.05}s` }} aria-hidden="true">
           {s === ' ' ? `\u00a0` : s}
         </Letter>
       ))
