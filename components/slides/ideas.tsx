@@ -3,7 +3,7 @@ import React, { memo } from 'react'
 import styled from '@emotion/styled'
 import { padding, smallScreen } from '~/styles/vars'
 import { Scroller } from '../scroller'
-import { Star } from '../field/star'
+import { Star } from '../star'
 
 const ideas: [string, string, JSX.Element | null][] = [
   ["Trust and transparency", "process and politics", <>
@@ -89,7 +89,7 @@ const Ideas = () => {
         { items }
       </List>
       <div style={{ textAlign: "center" }}>
-        <Punct size="20" symbol="Hexagon" />
+        <Punct size={ 20 } />
       </div>
     </Wrapper>
   )

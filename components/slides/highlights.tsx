@@ -4,7 +4,7 @@ import { staticFontSize } from "~/styles/mixins"
 import { padding } from '~/styles/vars'
 import { Highlight } from '~/components/highlight'
 import { useIntersection, intersectionEnabled } from '~/util/use-intersection'
-import { Star } from '../field/star'
+import { Star } from '../star'
 
 const HighlightsWrapper = styled.div({
   padding,
@@ -48,7 +48,7 @@ export const Highlights = () => {
       <HighlightsWrapper>
         <Subtitle>I&apos;m currently living in London helping <a href="https://sohohouse.com">Soho House</a> build digital products and a culture to support them.</Subtitle>
         <Subtitle style={{ marginLeft: `auto` }}>I enjoy helping teams work with intention and agency, and create an environment safe for innovating and building value
-          {visible && <Punct size="1em" symbol="Hexagon" /> }
+          {visible && <Punct size={ 20 } /> }
         </Subtitle>
       </HighlightsWrapper>
     </>
