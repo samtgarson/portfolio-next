@@ -11,10 +11,10 @@ const Field = dynamic(async () => (await import('../field')).Field, { ssr: false
 
 const fieldStyles = css({
   position: `absolute`,
-  top: 40,
-  height: `calc(100vh - 80px)`,
-  left: 40,
-  right: 40
+  top: `-100vh`,
+  height: `300vh`,
+  left: 0,
+  right: 0
 })
 
 const Wrapper = styled.div({
@@ -35,9 +35,7 @@ const intro = ['I build', 'teams', 'that build', 'things.']
 
 export const Intro = () => (
   <>
-    <Disappear friction={0.8} height={400}>
-      <Field className={ fieldStyles }/>
-    </Disappear>
+    <Field className={ fieldStyles }/>
     <Disappear>
       <Wrapper>
         { intro.map((t, i) => (
