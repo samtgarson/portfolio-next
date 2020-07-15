@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useRef } from 'react'
 import { Theme } from '../../styles/theme'
 import { init } from './init'
 
-export const Field: FunctionComponent<{ className?: string }> = ({ className }) => {
+export const Field: FunctionComponent<{ className?: string, debug?: boolean }> = ({ className, debug = false }) => {
   const ref = useRef<HTMLDivElement>(null)
   const colorUpdater = useRef<(newColor: string) => void>()
   const { colors } = Theme.useContainer()
@@ -10,7 +10,7 @@ export const Field: FunctionComponent<{ className?: string }> = ({ className }) 
   useEffect(() => {
     if (!ref.current) return
 
-    const { dispose, updateColor } = init(ref.current, colors.fg)
+    const { dispose, updateColor } = init(ref.current, colors.fg, debug)
     colorUpdater.current = updateColor
     return dispose
   }, [ref])

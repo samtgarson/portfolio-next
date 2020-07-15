@@ -76,7 +76,7 @@ const getReadyModifiers = (i: number, time?: number) => {
 const getScrollModifiers = (offset: number) => {
   const scrollDistance = 1000
   const totalDistance = 100
-  const clampedOffset = Num.clamp(offset, 0, scrollDistance)
+  const clampedOffset = Num.clamp(offset, -offset, scrollDistance)
   const progress = Shaping.quadraticOut(Num.mapToRange(clampedOffset, 0, scrollDistance, 0, 1))
   return {
     scrollMod: progress * totalDistance,
@@ -84,9 +84,11 @@ const getScrollModifiers = (offset: number) => {
   }
 }
 
-export const init = (el: HTMLDivElement, initialColor: string) => {
+export const init = (el: HTMLDivElement, initialColor: string, debug = false) => {
   const space = new CanvasSpace(el).setup({ resize: true, retina: true, bgcolor: `transparent` })
   const form = space.getForm()
+
+  const log = (...args: any[]) => debug && console.debug(...args)
 
   let pts: Point[] = []
   let bound: Bound
@@ -99,11 +101,14 @@ export const init = (el: HTMLDivElement, initialColor: string) => {
     pts = res.pts
     bound = res.bound
     scrollHandler()
+    log(scrollOffset)
   }
 
   let updating = false
   const updateScroll = () => {
-    scrollOffset = window.scrollY - el.offsetTop - bound.y
+    const offset = el.getBoundingClientRect().top
+    scrollOffset = ( offset + bound.y ) * -1
+    log(offset, bound.y, scrollOffset)
     updating = false
   }
 

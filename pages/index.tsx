@@ -6,6 +6,7 @@ import { ThemeDivider } from '~/components/theme-divider'
 import { Themes } from '~/styles/theme'
 import Ideas from '~/components/slides/ideas'
 import { Labs } from '~/components/slides/labs'
+import { Contact } from '~/components/slides/contact'
 
 const Home = () => (
   <>
@@ -16,6 +17,8 @@ const Home = () => (
     <Ideas />
     <ThemeDivider theme={Themes.Bright} />
     <Labs />
+    <ThemeDivider theme={Themes.Dark} />
+    <Contact />
   </>
 )
 

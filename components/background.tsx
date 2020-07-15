@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useRef, useEffect } from 'react'
 import styled from "@emotion/styled"
 import { Theme } from "~/styles/theme"
 import { SwitchTransition, Transition } from 'react-transition-group'
@@ -25,11 +25,16 @@ export const Background = () => {
   const { colors } = Theme.useContainer()
   const initialStyle = useMemo(() => createInitialStyle(colors.bg), [colors])
   const defaultStyle = useMemo(() => createDefaultStyle(colors.bg), [colors])
+  const counter = useRef(0)
+
+  useEffect(() => {
+    counter.current++
+  }, [colors])
 
   return (
     <SwitchTransition mode='in-out'>
       <Transition
-        key={colors.bg}
+        key={`${colors.bg}-${counter.current}`}
         timeout={DURATION}
       >
         {state => <Circle style={state === ENTERING ? initialStyle : defaultStyle} />}
