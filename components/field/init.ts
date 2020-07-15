@@ -124,9 +124,10 @@ export const init = (el: HTMLDivElement, initialColor: string) => {
       const { scrollMod, opacity: scrollOpacity } = getScrollModifiers(scrollOffset)
 
       for (let i=0, len=pts.length; i<len; i++) {
+        const scrollDistanceMod = Num.mapToRange(pts[i].distance, 0, 1, 0.5, 4)
         const { popMod, opacity: readyOpacity } = getReadyModifiers(i, time)
-        const scrollDistanceMod = Num.mapToRange(pts[i].distance, 0, 1, 1, 3)
         const floatMod = getFloatModifiers(t, i)
+
         const poly = getPoly(space, pts[i], mouseArea)
           .add({ x: 0, y: popMod + floatMod + (scrollMod * scrollDistanceMod) })
           .rotate2D(pts[i].rotate)

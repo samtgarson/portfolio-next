@@ -37,13 +37,11 @@ export const floatAnimation = {
   animationTimingFunction: `cubic-bezier(0.645, 0.045, 0.355, 1.000)`
 }
 
+export const popUpFrom = `translateY(120%) rotate(var(--initial-rotate, -360deg))`
+export const popUpTo = `translateY(0) rotate(var(--default-rotate, 0))`
 export const popUp = keyframes({
-  from: {
-    transform: `translateY(120%) rotate(var(--initial-rotate, -360deg))`
-  },
-  to: {
-    transform: `translateY(0) rotate(var(--default-rotate, 0))`
-  }
+  from: { transform: popUpFrom },
+  to: { transform: popUpTo }
 })
 
 export const popUpAnimation: CSSObject = {

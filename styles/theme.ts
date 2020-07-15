@@ -1,5 +1,5 @@
 import { createContainer } from 'unstated-next'
-import { useState, useMemo, useCallback, useEffect } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 
 export interface Colors {
   bg: string
@@ -25,7 +25,7 @@ const throttle = (fn: Function, ms: number) => () => {
 const themes: Record<string, Colors> = {
   [Themes.Dark]: { bg: 'black', fg: 'white', accent: '#19191C' },
   [Themes.White]: { bg: '#EEEDE9', fg: 'black', accent: 'white' },
-  [Themes.Bright]: { bg: '#1502ff', fg: 'white', accent: 'white' }
+  [Themes.Bright]: { bg: '#1502ff', fg: 'white', accent: 'rgba(255, 255, 255, 0.1)' }
 }
 
 type Breaks = [number, Themes][]

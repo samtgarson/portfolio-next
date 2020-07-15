@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import styled from "@emotion/styled"
 import { staticFontSize } from "~/styles/mixins"
 import { padding } from '~/styles/vars'
 import { Highlight } from '~/components/highlight'
-import { useIntersection, intersectionEnabled } from '~/util/use-intersection'
+import { useVisibleElement } from '~/util/use-intersection'
 import { Star } from '../star'
 
 const HighlightsWrapper = styled.div({
@@ -25,21 +25,11 @@ const Punct = styled(Star)({
 })
 
 export const Highlights = () => {
-  const wrapperRef = useRef(null)
-  const inView = useIntersection(wrapperRef, { threshold: 0.5 })
-  const [visible, setVisible] = useState(true)
-
-  useEffect(() => {
-    setVisible(false)
-    if (!intersectionEnabled) return setVisible(true)
-    if (!inView) return
-
-    setVisible(inView.isIntersecting || inView.boundingClientRect.y <= 0)
-  }, [inView])
+  const { ref, visible } = useVisibleElement({ threshold: 0.5 })
 
   return (
     <>
-      <HighlightsWrapper ref={wrapperRef}>
+      <HighlightsWrapper ref={ref}>
         <Subtitle>Hey there. I&apos;m a</Subtitle>
         { ['London based', 'product focused', 'tech lead.'].map((t, i) =>
           <Highlight key={t} text={t} delay={i * 0.3} visible={visible}/>

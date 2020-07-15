@@ -1,5 +1,5 @@
 // https://github.com/streamich/react-use/blob/master/src/useIntersection.ts
-import { RefObject, useEffect, useState } from 'react'
+import { RefObject, useEffect, useState, useRef } from 'react'
 
 export const useIntersection = (
   ref: RefObject<HTMLElement>,
@@ -25,6 +25,22 @@ export const useIntersection = (
   }, [ref.current, options.threshold, options.root, options.rootMargin])
 
   return intersectionObserverEntry
+}
+
+export const useVisibleElement = (options: IntersectionObserverInit) => {
+  const ref = useRef(null)
+  const inView = useIntersection(ref, options)
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    setVisible(false)
+    if (!intersectionEnabled) return setVisible(true)
+    if (!inView) return
+
+    setVisible(inView.isIntersecting || inView.boundingClientRect.y <= 0)
+  }, [inView])
+
+  return { visible, ref }
 }
 
 export const intersectionEnabled = typeof window !== 'undefined' && 'IntersectionObserver' in window

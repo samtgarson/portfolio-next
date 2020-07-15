@@ -2,7 +2,7 @@ import React, { useMemo, memo } from 'react'
 import styled from '@emotion/styled'
 import { textStroke } from '~/styles/mixins'
 import { cx } from '@emotion/css'
-import { stretchAnimation, popUpAnimation } from '~/styles/animations'
+import { stretchAnimation, popUpAnimation, popUpFrom, popUpTo } from '~/styles/animations'
 
 const Line = styled.span(
   ({ delay, align }: Pick<AppearProps, "align" | "delay">) => ({
@@ -15,10 +15,10 @@ const Line = styled.span(
 )
 
 const Letter = styled.span({
-  transform: `translateY(120%) rotate(var(--initial-rotate, -360deg))`,
-  transition: `.5s color ease, .2s textShadow ease`,
-  '.visible &': popUpAnimation,
-  '--initial-rotate': `0deg`
+  '--initial-rotate': `0deg`,
+  transform: popUpFrom,
+  transition: `.2s transform ${popUpAnimation.animationTimingFunction}, .5s color ease, .2s textShadow ease`,
+  '.visible &': { transform: popUpTo }
 })
 
 type AppearProps = {
@@ -37,7 +37,7 @@ export const _Appear = ({ text, visible = true, className = '', delay = 0, align
   return (
     <Line className={cx(className, { stretch, visible, outline })} delay={delay} align={align} aria-label={text} >{
       arr.map((s, i) => (
-        <Letter key={`${text}-${i}`} style={{ animationDelay: `${delay + i * 0.05}s` }} aria-hidden="true">
+        <Letter key={`${text}-${i}`} style={{ transitionDelay: `${delay + i * 0.05}s, 0s, 0s` }} aria-hidden="true">
           {s === ' ' ? `\u00a0` : s}
         </Letter>
       ))
