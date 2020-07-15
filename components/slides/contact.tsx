@@ -13,7 +13,7 @@ const fieldStyles = css({
   right: 0
 })
 
-const Wrapper = styled.div({
+const Wrapper = styled.section({
   position: `relative`,
   height: `100vh`,
   overflow: `hidden`,

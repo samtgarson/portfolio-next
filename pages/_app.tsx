@@ -10,8 +10,10 @@ const App = ({ Component, pageProps }: AppPropsType) => {
   return (
     <>
       <Head>
-        <title>Sam Garson</title>
-        <link rel="stylesheet" type="text/css" href="/fonts/studio-feixen.css" />
+        <title>Sam Garson—London based, product focused tech lead</title>
+        <meta name="title" content="Sam Garson—London based, product focused tech lead" />
+        <meta name="description" content="Tech lead helping teams work with intention and agency, and create an environment safe for innovating and building value." />
+
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <Theme.Provider>

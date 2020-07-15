@@ -5,7 +5,7 @@ import React from "react"
 import { useVisibleElement } from "~/util/use-intersection"
 import { padding } from "~/styles/vars"
 
-const Wrapper = styled.div({
+const Wrapper = styled.section({
   padding,
   position: `relative`,
   margin: `10vh 0`

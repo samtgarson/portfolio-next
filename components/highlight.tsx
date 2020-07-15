@@ -32,7 +32,7 @@ export const Highlight: FunctionComponent<HighlightProps> = ({ text, delay = 0, 
         delay={delay}
         visible={visible}
       />
-      <Title visible={visible} delay={delay + 0.6} text={text} />
+      <Title aria-hidden={true} visible={visible} delay={delay + 0.6} text={text} />
     </HighlightWrapper>
   )
 }

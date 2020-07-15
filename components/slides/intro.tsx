@@ -17,7 +17,7 @@ const fieldStyles = css({
   right: 0
 })
 
-const Wrapper = styled.div({
+const Wrapper = styled.section({
   position: `relative`,
   height: `100vh`,
   display: `flex`,
@@ -38,16 +38,18 @@ export const Intro = () => (
     <Field className={ fieldStyles }/>
     <Disappear>
       <Wrapper>
-        { intro.map((t, i) => (
-          <Title
-            outline={i % 2 === 0}
-            stretch={i % 2 !== 0}
-            text={t}
-            delay={(i + 1) * 0.3}
-            align='center'
-            key={i}
-          />
-        ))}
+        <h1>
+          { intro.map((t, i) => (
+            <Title
+              outline={i % 2 === 0}
+              stretch={i % 2 !== 0}
+              text={t}
+              delay={(i + 1) * 0.3}
+              align='center'
+              key={i}
+            />
+          ))}
+        </h1>
       </Wrapper>
     </Disappear>
   </>

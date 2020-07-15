@@ -22,7 +22,7 @@ const ideas: [string, string, JSX.Element | null][] = [
   </>]
 ]
 
-const Wrapper = styled.div({
+const Wrapper = styled.section({
   padding,
   background: `var(--accentColor)`,
   transition: `.5s background-color .2s ease`,

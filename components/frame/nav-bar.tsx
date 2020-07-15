@@ -20,7 +20,7 @@ const TitleWrapper = styled.div({
   flexFlow: `row-nowrap`
 })
 
-const Title = styled.h1({
+const Title = styled.p({
   ...dot(`0.9em`, `before`, { marginRight: `0.9em` }),
   lineHeight: `1em`,
   fontVariationSettings: `'wght' 400, 'wdth' 100`,

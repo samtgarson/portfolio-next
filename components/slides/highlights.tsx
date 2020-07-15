@@ -6,7 +6,7 @@ import { Highlight } from '~/components/highlight'
 import { useVisibleElement } from '~/util/use-intersection'
 import { Star } from '../star'
 
-const HighlightsWrapper = styled.div({
+const HighlightsWrapper = styled.section({
   padding,
   position: `relative`,
   marginBottom: `10vh`
