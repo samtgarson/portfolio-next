@@ -84,8 +84,8 @@ const getScrollModifiers = (offset: number) => {
   }
 }
 
-export const init = (el: HTMLDivElement, initialColor: string, debug = false) => {
-  const space = new CanvasSpace(el).setup({ resize: true, retina: true, bgcolor: `transparent` })
+export const init = (id: string, initialColor: string, debug = false) => {
+  const space = new CanvasSpace(id).setup({ resize: true, retina: true, bgcolor: `transparent` })
   const form = space.getForm()
 
   const log = (...args: any[]) => debug && console.debug(...args)
@@ -106,7 +106,7 @@ export const init = (el: HTMLDivElement, initialColor: string, debug = false) =>
 
   let updating = false
   const updateScroll = () => {
-    const offset = el.getBoundingClientRect().top
+    const offset = space.element.getBoundingClientRect().top
     scrollOffset = ( offset + bound.y ) * -1
     log(offset, bound.y, scrollOffset)
     updating = false

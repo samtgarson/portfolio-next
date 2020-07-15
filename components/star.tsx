@@ -27,7 +27,7 @@ type StarProps = {
 
 export const Star = ({ className, size }: StarProps) => {
   const elem = useMemo(() => (
-    <StarWrapper className={className}>
+    <StarWrapper className={className} aria-hidden={true}>
       <StyledStar size={size} className='star' />
     </StarWrapper>
   ), [])
