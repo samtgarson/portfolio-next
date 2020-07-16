@@ -9,8 +9,8 @@ const ideas: [string, string, JSX.Element | null][] = [
   ["Trust and transparency", "process and politics", <>
     <p>What most people in our industry call &quot;process&quot; can be a useful tool to help teams work like teams; but will not replace a shared vision, autonomy and trust. Put great people on a team, give them a clear goal and <a href="https://twitter.com/johncutlefish/status/975026422002589701?s=20">leave them alone</a>.</p>
   </>],
-  ["Risk and experimentation", "planning and certainty", <>
-    <p>The sooner we are honest with ourselves about what how little we know, the sooner we can start working to learn more. Everything in technology comes with risk, and there is very little certainty—but a trusted team with a shared goal will adapt and iterate to build a better product than we could ever have planned for.</p>
+  ["Agility and experimentation", "certainty and assumption", <>
+    <p>The sooner we are honest with ourselves about what how little we know, the sooner we can start working to learn more. There are very few certainties in technology so we must create an environment where it is safe to take calculated risks, build teams that can adapt and introspect and build architecture which is flexible and forgiving.</p>
   </>],
   ["Celebration and introspection", "optics and theatre", <>
     <p>Celebrating our successes is crucial to building a team that works well together, but so is talking openly and honestly about our failures—and gaining real learnings from them. You can tell a lot about an organisation from the way it talks internally about its successes and failures.</p>
@@ -28,10 +28,9 @@ const Wrapper = styled.section({
   transition: `.5s background-color .2s ease`,
   borderRadius: 5,
   margin: `${padding * 2}px auto`,
-  width: `90vw`,
+  width: `calc(100vw - ${padding * 2}px)`,
   maxWidth: 700,
   [smallScreen]: {
-    width: `85vw`,
     padding: padding / 2
   }
 })

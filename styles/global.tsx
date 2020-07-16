@@ -19,6 +19,7 @@ export const GlobalStyles = () => {
           WebkitFontSmoothing: `antialiased`,
           MozOsxFontSmoothing: `grayscale`,
           transition: `.5s color ease`,
+          scrollBehavior: `smooth`,
           '--fgColor': colors.fg,
           '--bgColor': colors.bg,
           '--accentColor': colors.accent

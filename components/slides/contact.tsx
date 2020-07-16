@@ -29,7 +29,7 @@ const Wrapper = styled.section({
 
 export const Contact = () => {
   return (
-    <Wrapper>
+    <Wrapper id="contact">
       <Field id="contact-field" className={ fieldStyles }/>
       <a href="mailto:sam@samgarson.com">sam@samgarson.com</a>
     </Wrapper>
