@@ -22,6 +22,7 @@ const App = ({ Component, pageProps }: AppPropsType) => {
         <Frame />
         <Component {...pageProps} />
       </Theme.Provider>
+      <link rel="stylesheet" type="text/css" href="/fonts/studio-feixen.css" />
     </>
   )
 }

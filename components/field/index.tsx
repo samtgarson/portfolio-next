@@ -2,18 +2,15 @@ import React, { FunctionComponent, useEffect, useRef } from 'react'
 import { Theme } from '../../styles/theme'
 import { init } from './init'
 
-let counter = 0
-export const Field: FunctionComponent<{ className?: string, debug?: boolean }> = ({ className, debug = false }) => {
+export const Field: FunctionComponent<{ className?: string, debug?: boolean, id: string }> = ({ className, debug = false, id }) => {
   const canvas = useRef(null)
   const colorUpdater = useRef<(newColor: string) => void>()
   const { colors } = Theme.useContainer()
-  const id = `star-field-${counter}`
 
 
   useEffect(() => {
     if (!canvas.current) return
 
-    counter++
     const { dispose, updateColor } = init(`#${id}`, colors.fg, debug)
     colorUpdater.current = updateColor
 

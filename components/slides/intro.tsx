@@ -35,7 +35,7 @@ const intro = ['I build', 'teams', 'that build', 'things.']
 
 export const Intro = () => (
   <Wrapper>
-    <Field className={ fieldStyles }/>
+    <Field id="intro-field" className={ fieldStyles }/>
     <h1>
       { intro.map((t, i) => (
         <Title
