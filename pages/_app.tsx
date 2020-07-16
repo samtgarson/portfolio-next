@@ -5,8 +5,11 @@ import { Theme } from '~/styles/theme'
 import { Frame } from '~/components/frame'
 import Head from 'next/head'
 import { Background } from '~/components/background'
+import { useFathom } from '~/util/use-fathom'
 
 const App = ({ Component, pageProps }: AppPropsType) => {
+  useFathom()
+
   return (
     <>
       <Head>
