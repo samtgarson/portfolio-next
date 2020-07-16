@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import styled from '@emotion/styled'
 import { popUpAnimation, floatAnimation } from '~/styles/animations'
+import { cx } from '@emotion/css'
 
 const Hexagon = ({ size = 20, className }: { size?: number, className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 266 266" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
@@ -12,7 +13,7 @@ const StarWrapper = styled.span({
   overflow: `hidden`,
   fontFamily: `sans-serif`,
   display: `inline-block`,
-  ...floatAnimation
+  '&.float': floatAnimation
 })
 
 const StyledStar = styled(Hexagon)({
@@ -23,11 +24,12 @@ const StyledStar = styled(Hexagon)({
 type StarProps = {
   size?: number
   className?: string
+  float?: boolean
 }
 
-export const Star = ({ className, size }: StarProps) => {
+export const Star = ({ className, size, float = true }: StarProps) => {
   const elem = useMemo(() => (
-    <StarWrapper className={className} aria-hidden={true}>
+    <StarWrapper className={cx(`star`, className, { float })} aria-hidden={true}>
       <StyledStar size={size} className='star' />
     </StarWrapper>
   ), [])

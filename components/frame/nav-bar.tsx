@@ -2,7 +2,7 @@ import * as React from 'react'
 import { GitHub, Twitter, Instagram } from 'react-feather'
 import styled from '@emotion/styled'
 import { padding, smallScreen } from '~/styles/vars'
-import { dot } from '~/styles/mixins'
+import { Star } from '../star'
 
 const Nav = styled.nav({
   position: `fixed`,
@@ -12,21 +12,26 @@ const Nav = styled.nav({
   display: `flex`,
   flexFlow: `row-nowrap`,
   justifyContent: `space-between`,
-  zIndex: 100
+  zIndex: 100,
+  alignItems: `flex-start`
 })
 
 const TitleWrapper = styled.div({
   display: `flex`,
-  flexFlow: `row-nowrap`
+  flexFlow: `row-nowrap`,
+  alignItems: `center`,
+  '.star': {
+    lineHeight: 0
+  }
 })
 
 const Title = styled.p({
-  ...dot(`0.9em`, `before`, { marginRight: `0.9em` }),
   lineHeight: `1em`,
   fontVariationSettings: `'wght' 400, 'wdth' 100`,
   textTransform: `uppercase`,
   fontSize: `0.9rem`,
-  margin: 0
+  margin: 0,
+  marginLeft: padding / 3
 })
 
 const LinkWrapper = styled.div({
@@ -45,6 +50,7 @@ const LinkWrapper = styled.div({
 export const NavBar = () => (
   <Nav>
     <TitleWrapper>
+      <Star float={false} />
       <Title>Sam Garson</Title>
     </TitleWrapper>
     <LinkWrapper>

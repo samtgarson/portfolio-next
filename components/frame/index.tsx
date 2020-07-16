@@ -2,7 +2,8 @@ import * as React from 'react'
 import { NavBar } from './nav-bar'
 import styled from '@emotion/styled'
 import { bigScreen, smallScreen, padding } from '~/styles/vars'
-import { dot, line } from '~/styles/mixins'
+import { line } from '~/styles/mixins'
+import { Star } from '../star'
 
 const Footer = styled.footer({
   position: `fixed`,
@@ -22,8 +23,6 @@ const Footer = styled.footer({
   transform: `rotate(90deg)`,
   transformOrigin: `100% 0%`,
 
-  ...dot(`0.7rem`),
-
   a: {
     textDecoration: `none`,
     fontSize: `0.9rem`,
@@ -34,6 +33,9 @@ const Footer = styled.footer({
     [smallScreen]: {
       marginRight: padding / 2
     }
+  },
+  '.star': {
+    lineHeight: 0
   }
 })
 
@@ -44,6 +46,7 @@ export const Frame = () => {
       <NavBar />
       <Footer>
         <a href="#contact">Get in touch</a>
+        <Star float={false} />
       </Footer>
     </>
   )

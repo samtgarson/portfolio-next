@@ -1,5 +1,4 @@
-import { CSSObject } from "@emotion/css"
-import { padding, smallScreen } from "./vars"
+import { padding } from "./vars"
 
 export const fontSizes = {
   small: 3.6,
@@ -8,23 +7,6 @@ export const fontSizes = {
 }
 
 export const staticFontSize = (n: number, m: number = n * 1.15) => `max(${n}vw, ${m}vh)`
-
-export const dot = (
-  size = '1em',
-  position: 'before' | 'after' = 'after',
-  styles: CSSObject = {}
-) => ({
-  [`&::${position}`]: {
-    content: '""',
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    height: size,
-    width: size,
-    borderRadius: 50,
-    backgroundColor: 'var(--fgColor)',
-    ...styles
-  }
-})
 
 export const line = (
   position: 'before' | 'after' = 'after',
@@ -54,8 +36,5 @@ const _textStroke = (color: string, w: number) => `
 export const textStroke = {
   textShadow: _textStroke('var(--fgColor)', 1),
   color: `var(--accentColor)`,
-  transition: `textShadow .2s ease`,
-  [smallScreen]: {
-    textShadow: _textStroke('var(--fgColor)', 0.5)
-  }
+  transition: `textShadow .2s ease`
 }
