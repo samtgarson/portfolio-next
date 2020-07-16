@@ -29,7 +29,7 @@ export const Highlights = () => {
 
   return (
     <>
-      <HighlightsWrapper ref={ref}>
+      <HighlightsWrapper tabIndex={0} ref={ref}>
         <Subtitle>Hey there. I&apos;m a</Subtitle>
         { ['London based', 'product focused', 'tech lead.'].map((t, i) =>
           <Highlight key={t} text={t} delay={i * 0.3} visible={visible}/>

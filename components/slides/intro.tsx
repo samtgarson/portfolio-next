@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { Appear } from '~/components/appear'
-import { Disappear } from '~/components/disappear'
 import { staticFontSize } from '~/styles/mixins'
 import { css } from '@emotion/css'
 import dynamic from 'next/dynamic'
@@ -34,7 +33,7 @@ const Title = styled(Appear)({
 const intro = ['I build', 'teams', 'that build', 'things.']
 
 export const Intro = () => (
-  <Wrapper>
+  <Wrapper tabIndex={0}>
     <Field id="intro-field" className={ fieldStyles }/>
     <h1>
       { intro.map((t, i) => (

@@ -26,10 +26,18 @@ export const GlobalStyles = () => {
         },
         a: {
           color: `inherit`,
-          transition: `font-variation-settings .3s ease`
+          transition: `.3s font-variation-settings ease, .2s border ease, .2s padding ease`,
+          display: `inline-block`,
+          border: `1px solid transparent`
         },
-        'a: hover': {
+        'a:hover': {
           fontVariationSettings: `'wdth' 100, 'wght' 0`
+        },
+        'a:focus': {
+          fontVariationSettings: `'wdth' 100, 'wght' 0`,
+          outline: `none`,
+          border: `1px solid currentColor`,
+          padding: `0 2px`
         },
         p: {
           lineHeight: 1.8

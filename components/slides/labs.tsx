@@ -80,7 +80,7 @@ export const Labs = () => {
   ))
 
   return (
-    <Wrapper ref={ref}>
+    <Wrapper tabIndex={0} ref={ref}>
       <h2><Title visible={visible} text="Labs" /></h2>
       <Subtitle>Recent projects and experiments.</Subtitle>
       <Grid>{ gridItems }</Grid>

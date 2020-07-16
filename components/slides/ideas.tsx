@@ -19,6 +19,10 @@ const ideas: [string, string, JSX.Element | null][] = [
   ["Investment in teams", "investment in projects", <>
     <p>There is a variation on Conway&apos;s Law which states &quot;<a href="https://en.wikipedia.org/wiki/Conway's_law">The structure of any system designed by an organization is isomorphic to the structure of the organization</a>&quot;, and the strongest indicator of an organisation&apos;s true structure is how it spends its money.</p>
     <p>&quot;<a href="https://public.digital/2019/05/08/fix-the-finances-transform-the-organisation/">Fix the finances, transform the organisation</a>&quot;—orgs which fund teams end up with a long-lasting ability to build value and respond to change.</p>
+  </>],
+  ["Diversity and debate", "uniformity and likemindedness", <>
+    <p>Technology has a diversity and inclusion problem which stems from implicit (and often explicit) biases of those in positions of power. It is essentual that we examine our own prejudices, listen, and work against the systemic processes which maintain the inequality we still face.</p>
+    <p>Diverse teams comprising people from different backgrounds with different experiences who encourage healthy debate work with more empathy and build better technology. Those who don&apos;t build their view of the system into their products.</p>
   </>]
 ]
 
@@ -82,7 +86,7 @@ const Ideas = () => {
   ))
 
   return (
-    <Wrapper>
+    <Wrapper tabIndex={0}>
       <Title text="Lessons I’ve learned" />
       <List>
         { items }

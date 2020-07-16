@@ -27,5 +27,5 @@ export const Field: FunctionComponent<{ className?: string, debug?: boolean, id:
     colorUpdater.current(colors.fg)
   }, [colors])
 
-  return <div style={styles} ref={canvas} id={id} className={className}></div>
+  return <div aria-hidden={true} style={styles} ref={canvas} id={id} className={className}></div>
 }
