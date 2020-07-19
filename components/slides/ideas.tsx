@@ -77,7 +77,7 @@ const Punct = styled(Star)({
   margin: `0 auto`
 })
 
-const Ideas = () => {
+const _Ideas = () => {
   const items = ideas.map(idea => (
     <li key={idea.join()}>
       <h4>{ idea[0] }<strong> over </strong>{ idea[1] }</h4>
@@ -98,4 +98,4 @@ const Ideas = () => {
   )
 }
 
-export default memo(Ideas)
+export const Ideas = memo(_Ideas)
