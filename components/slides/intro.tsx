@@ -2,19 +2,6 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { Appear } from '~/components/appear'
 import { staticFontSize } from '~/styles/mixins'
-import { css } from '@emotion/css'
-import dynamic from 'next/dynamic'
-
-
-const Field = dynamic(async () => (await import('../field')).Field, { ssr: false })
-
-const fieldStyles = css({
-  position: `absolute`,
-  top: `-100vh`,
-  height: `300vh`,
-  left: 0,
-  right: 0
-})
 
 const Wrapper = styled.header({
   position: `relative`,
@@ -34,7 +21,6 @@ const intro = ['I build', 'teams', 'that build', 'things.']
 
 export const Intro = () => (
   <Wrapper tabIndex={0}>
-    <Field id="intro-field" className={ fieldStyles }/>
     <h1>
       { intro.map((t, i) => (
         <Title
