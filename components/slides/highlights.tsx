@@ -36,7 +36,7 @@ export const Highlights = () => {
         ) }
       </HighlightsWrapper>
       <HighlightsWrapper>
-        <Subtitle>I&apos;m currently living in London helping <a href="https://sohohouse.com">Soho House</a> build digital products and a culture to support them.</Subtitle>
+        <Subtitle>I&apos;m currently living in London helping <a href="https://progressionapp.com">Progression</a> build a tech team and find product market fit.</Subtitle>
         <Subtitle style={{ marginLeft: `auto` }}>I enjoy helping teams work with intention and agency, and create an environment safe for innovating and building value
           {visible && <Punct size={ 60 } /> }
         </Subtitle>
