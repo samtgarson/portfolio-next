@@ -43,7 +43,7 @@ const items: {
   {
     title: 'Dobble',
     desc: <p>A team I worked on played <a href="https://www.asmodee.co.uk/featured-product/dobble/">Dobble</a> a lot, which started as fun but ended up being a great way to build connection with each other. When COVID-19 happened, we could no longer play so I built an online version to keep us playing.</p>,
-    url: 'https://dobble.samgarson.com'
+    url: 'https://dobble.club'
   },
   {
     title: 'Great Orchestra',
@@ -62,7 +62,12 @@ const items: {
   },
   {
     title: 'Music Practice',
-    desc: <p>I set myself the goal of learning piano during COVID-19 lockdown, but it made much more sense to build an app to help myself learn piano rather than actually learning it. Built with SwiftUI.</p>
+    desc: <p>I set myself the goal of learning piano during COVID-19 lockdown, but it made much more sense to build an app to help myself learn piano rather than actually learning it. Built with SwiftUI.</p>,
+    url: 'http://musicpractice.app'
+  },
+  {
+    title: 'Show Me Your Art',
+    desc: <p><a href="https://jamingalea.com">My friend Jamin</a> had noticed that there are some artists that have a passionate following of people who own their pieces. We're building a place to see where in the world that art lives and bring those people together.</p>
   }
 ]
 
