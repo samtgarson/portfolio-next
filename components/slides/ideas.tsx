@@ -45,7 +45,10 @@ const List = styled.ol({
   padding: 0,
   li: {
     counterIncrement: `ideasCounter`,
-    margin: `${padding * 1.5}px 0 ${padding * 2.5}px`
+    margin: `${padding * 1.5}px 0 ${padding * 2.5}px`,
+    a: {
+      display: `inline`
+    }
   },
   h4: {
     '&::before': {
