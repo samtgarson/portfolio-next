@@ -7,10 +7,10 @@ import { Star } from '../star'
 
 const ideas: [string, string, JSX.Element | null][] = [
   ["Trust and transparency", "process and politics", <>
-    <p>What most people in our industry call &quot;process&quot; can be a useful tool to help teams work like teams; but will not replace a shared vision, autonomy and trust. Put great people on a team, give them a clear goal and <a href="https://twitter.com/johncutlefish/status/975026422002589701?s=20">leave them alone</a>.</p>
+    <p>What most people in our industry call &quot;process&quot; can be a useful tool to help teams work like teams; but will not replace a shared vision, autonomy and trust. Put great people on a team, give them a clear goal and <a href="https://cutlefish.substack.com/p/tbm-265-rebuilding-trust-and-breaking">leave them alone</a>.</p>
   </>],
   ["Agility and experimentation", "certainty and assumption", <>
-    <p>The sooner we are honest with ourselves about what how little we know, the sooner we can start working to learn more. There are very few certainties in technology so we must create an environment where it is safe to take calculated risks, build teams that can adapt and introspect and build architecture which is flexible and forgiving.</p>
+    <p>The sooner we are honest with ourselves about what how little we know, the sooner we can start working to learn more. There are very few certainties in technology so we must create an environment where it is safe to take calculated risks, build teams that can measure, adapt and introspect, and build architecture which is frictionless and forgiving.</p>
   </>],
   ["Celebration and introspection", "optics and theatre", <>
     <p>Celebrating our successes is crucial to building a team that works well together, but so is talking openly and honestly about our failures—and gaining real learnings from them. You can tell a lot about an organisation from the way it talks internally about its successes and failures.</p>
@@ -45,7 +45,10 @@ const List = styled.ol({
   padding: 0,
   li: {
     counterIncrement: `ideasCounter`,
-    margin: `${padding * 1.5}px 0 ${padding * 2.5}px`
+    margin: `${padding * 1.5}px 0 ${padding * 2.5}px`,
+    a: {
+      display: `inline`
+    }
   },
   h4: {
     '&::before': {
